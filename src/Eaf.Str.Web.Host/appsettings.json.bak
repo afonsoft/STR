@@ -1,0 +1,19 @@
+﻿{
+  "Database": {
+    "IsOracleEnabled": "false",
+    "EnableDetailedErrors": "true",
+    "EnableSensitiveDataLogging": "true"
+  },
+  "Hangfire": {
+    "IsEnabled": "true",
+    "IsInMemoryDatabase": "false"
+  },
+  "Authentication": {
+    "JwtBearer": {
+      "IsEnabled": "true",
+      "SecurityKey": "ProjectName_8CFB2EC534E14D56",
+      "Issuer": "ProjectName",
+      "Audience": "ProjectName"
+    }
+  }
+}

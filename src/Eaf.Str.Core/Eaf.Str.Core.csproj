@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\common.props"></Import>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<AssemblyName>Eaf.Str.Core</AssemblyName>
+		<PackageId>Eaf.Str.Core</PackageId>
+		<UserSecretsId>Eaf-ProjectName-894FDFC1-6482-4A56-926A-3C46C9FE0329</UserSecretsId>
+		<RootNamespace>Eaf.Str</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Application\Localization\ProjectName\ProjectName-pt-BR.xml" />
+		<EmbeddedResource Include="Application\Localization\ProjectName\ProjectName.xml" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Eaf.Middleware.Core" Version="6.1.3" />
+		<PackageReference Include="Eaf.TextTemplating" Version="6.1.3" />
+		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
+	</ItemGroup>
+</Project>

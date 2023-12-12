@@ -1,0 +1,50 @@
+﻿@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./gol/GOLSansDisplay-Bold.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./gol/GOLSansDisplay-Light.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./gol/GOLSansDisplay-Medium.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./gol/GOLSansDisplay-Regular.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./gol/GOLSansDisplay-Thin.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./gol/GOLSansDisplay-XBold.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansText";
+    src: url(./gol/GOLSansText-Bold.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansText";
+    src: url(./gol/GOLSansText-Light.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansText";
+    src: url(./gol/GOLSansText-Medium.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansText";
+    src: url(./gol/GOLSansText-Regular.ttf);
+}
+

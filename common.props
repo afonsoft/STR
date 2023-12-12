@@ -1,0 +1,22 @@
+<Project>
+
+	<PropertyGroup>
+		<Version>6.0.0</Version>
+		<TemplateVersion>6.0.0.0</TemplateVersion>
+		<PackageProjectUrl>http://www.projectname.com.br/</PackageProjectUrl>
+		<PackageLicenseUrl>https://github.com/afonsoft/STR</PackageLicenseUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/afonsoft/STR</RepositoryUrl>
+		<Authors>AFONSOFT</Authors>
+		<Company>EAF</Company>
+		<Copyright>Copyright © 2023</Copyright>
+		<LangVersion>9.0</LangVersion>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<Platform>Any CPU</Platform>
+		<SelfContained>false</SelfContained>
+		<NoWarn>$(NoWarn);CS1591;SYSLIB0001;SYSLIB0002;SYSLIB0003;MSB3277</NoWarn>
+		<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3253;MSB3277</MSBuildWarningsAsMessages>
+	</PropertyGroup>
+</Project>
