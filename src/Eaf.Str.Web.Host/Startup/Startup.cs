@@ -104,7 +104,7 @@ namespace Eaf.Str.Web.Startup
                     Contact = new OpenApiContact
                     {
                         Name = "Transportation and tracking system",
-                        Email = "Str@afonsoft.com.br"
+                        Email = "contato@afonsoft.com.br"
                     },
                     License = new OpenApiLicense
                     {
