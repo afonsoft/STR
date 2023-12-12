@@ -47,11 +47,8 @@ namespace Eaf.Str.Web.Startup
                     typeof(StrApplicationModule).GetAssembly()
                 );
 
-            //Send All Exceptions To Clients Angular only in develop/staging
-            if (!_hostingEnvironment.IsProduction())
-                Configuration.Modules.EafWebCommon().SendAllExceptionsToClients = true;
-            else
-                Configuration.Modules.EafWebCommon().SendAllExceptionsToClients = false;
+            //Send All Exceptions To Clients Angular
+            Configuration.Modules.EafWebCommon().SendAllExceptionsToClients = true;
 
             //Enable Delete Expired Logs
             Configuration.EntityHistory.LogExpireTime = TimeSpan.FromDays(360);
