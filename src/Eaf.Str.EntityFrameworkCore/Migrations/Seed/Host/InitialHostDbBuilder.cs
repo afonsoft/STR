@@ -4,10 +4,10 @@ namespace Eaf.Str.Migrations.Seed.Host
 {
     public class InitialHostDbBuilder
     {
-        private readonly ProjectNameDbContext _context;
+        private readonly StrDbContext _context;
 
         public InitialHostDbBuilder(
-            ProjectNameDbContext context
+            StrDbContext context
         )
         {
             _context = context;

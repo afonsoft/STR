@@ -13,7 +13,7 @@ namespace Eaf.Str.Test.Base.Configuration
         public TestAppConfigurationAccessor()
         {
             Configuration = AppConfigurations.Get(
-                typeof(ProjectNameTestBaseModule).GetAssembly().GetDirectoryPathOrNull()
+                typeof(StrTestBaseModule).GetAssembly().GetDirectoryPathOrNull()
             );
         }
     }

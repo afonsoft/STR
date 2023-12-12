@@ -57,7 +57,7 @@ namespace Eaf.Str.Web.Startup
             //Configure OpenTelemetry
             services.AddEafOpenTelemetry(options =>
             {
-                options.ServiceName = "ProjectName";
+                options.ServiceName = "Str";
                 options.SourceName = new[]
                 {
                     "Eaf.Str.Web.Host",
@@ -70,7 +70,7 @@ namespace Eaf.Str.Web.Startup
             //Configure CORS for angular2 UI
             services.AddCors(options =>
             {
-                options.AddPolicy(ProjectNameConsts.DefaultCorsPolicyName, builder =>
+                options.AddPolicy(StrConsts.DefaultCorsPolicyName, builder =>
                 {
                     builder.SetIsOriginAllowedToAllowWildcardSubdomains();
 
@@ -99,12 +99,12 @@ namespace Eaf.Str.Web.Startup
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "ProjectName API",
-                    Description = "ProjectName",
+                    Title = "Str API",
+                    Description = "Str",
                     Contact = new OpenApiContact
                     {
-                        Name = "ProjectName",
-                        Email = "ProjectName@afonsoft.com.br"
+                        Name = "Str",
+                        Email = "Str@afonsoft.com.br"
                     },
                     License = new OpenApiLicense
                     {
@@ -150,7 +150,7 @@ namespace Eaf.Str.Web.Startup
 
             app.UseDeveloperExceptionPage();
 
-            app.UseCors(ProjectNameConsts.DefaultCorsPolicyName); //Enable CORS!
+            app.UseCors(StrConsts.DefaultCorsPolicyName); //Enable CORS!
 
             app.UseJwtTokenMiddleware();
 
@@ -176,7 +176,7 @@ namespace Eaf.Str.Web.Startup
                 // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
                 app.UseSwaggerUI(options =>
                 {
-                    options.SwaggerEndpoint("../swagger/v1/swagger.json", "ProjectName API V1");
+                    options.SwaggerEndpoint("../swagger/v1/swagger.json", "Str API V1");
                     options.IndexStream = () => Assembly.GetExecutingAssembly().GetManifestResourceStream("Eaf.Str.Web.wwwroot.swagger.ui.index.html");
                     options.InjectBaseUrl(_appConfiguration["App:ServerRootAddress"]);
                 });

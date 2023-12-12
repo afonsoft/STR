@@ -5,7 +5,7 @@
 		<AssemblyName>Eaf.Str.Migrator</AssemblyName>
 		<OutputType>Exe</OutputType>
 		<PackageId>Eaf.Str.Migrator</PackageId>
-		<UserSecretsId>Eaf-ProjectName-894FDFC1-6482-4A56-926A-3C46C9FE0329</UserSecretsId>
+		<UserSecretsId>Eaf-Str-894FDFC1-6482-4A56-926A-3C46C9FE0329</UserSecretsId>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	</PropertyGroup>

@@ -16,10 +16,10 @@ namespace Eaf.Str.Test.Base.TestData
 
     public class TestOrganizationUnitsBuilder
     {
-        private readonly ProjectNameDbContext _context;
+        private readonly StrDbContext _context;
         private readonly int _tenantId;
 
-        public TestOrganizationUnitsBuilder(ProjectNameDbContext context, int tenantId)
+        public TestOrganizationUnitsBuilder(StrDbContext context, int tenantId)
         {
             _context = context;
             _tenantId = tenantId;

@@ -15,10 +15,10 @@ namespace Eaf.Str.Migrations.Seed
     {
         public static void SeedHostDb(IIocResolver iocResolver)
         {
-            WithDbContext<ProjectNameDbContext>(iocResolver, SeedHostDb);
+            WithDbContext<StrDbContext>(iocResolver, SeedHostDb);
         }
 
-        public static void SeedHostDb(ProjectNameDbContext context)
+        public static void SeedHostDb(StrDbContext context)
         {
             context.SuppressAutoSetTenantId = true;
 

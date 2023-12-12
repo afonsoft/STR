@@ -8,10 +8,10 @@ namespace Eaf.Str.Migrations.Seed.Tenants
 {
     public class DefaultTenantBuilder
     {
-        private readonly ProjectNameDbContext _context;
+        private readonly StrDbContext _context;
 
         public DefaultTenantBuilder(
-            ProjectNameDbContext context
+            StrDbContext context
         )
         {
             _context = context;

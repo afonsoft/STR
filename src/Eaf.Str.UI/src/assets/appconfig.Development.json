@@ -1,6 +1,6 @@
 {
-  "remoteServiceBaseUrl": "https://dev-ProjectName-api.afonsoft.com.br",
-  "appBaseUrl": "https://dev-ProjectName.afonsoft.com.br",
+  "remoteServiceBaseUrl": "https://dev-Str-api.afonsoft.com.br",
+  "appBaseUrl": "https://dev-Str.afonsoft.com.br",
   "localeMappings": [
     {
       "from": "pt-BR",

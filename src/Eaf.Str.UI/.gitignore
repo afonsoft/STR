@@ -38,7 +38,7 @@ package-lock
 Thumbs.db
 
 # VS files
-/ProjectName.AngularUI.csproj.user
+/Str.AngularUI.csproj.user
 project.lock.json
 Properties/launchSettings.json
 /Eaf.Str.AngularUI.xproj.user

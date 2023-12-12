@@ -12,7 +12,7 @@ using System.Net;
 namespace Eaf.Str.Web.Startup
 {
     [DependsOn(
-        typeof(ProjectNameApplicationModule),
+        typeof(StrApplicationModule),
         typeof(MiddlewareWebCoreModule)
     )]
     public class WebHostModule : EafModule
@@ -36,7 +36,7 @@ namespace Eaf.Str.Web.Startup
         public override void PreInitialize()
         {
             //Set default connection string
-            Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(ProjectNameConsts.ConnectionStringName);
+            Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(StrConsts.ConnectionStringName);
 
             //Database Configurations
             Configuration.Database.IsOracleEnabled = Convert.ToBoolean(_appConfiguration["Database:IsOracleEnabled"]);
@@ -44,7 +44,7 @@ namespace Eaf.Str.Web.Startup
             //Create Controllers APIs
             Configuration.Modules.EafAspNetCore()
                 .CreateControllersForAppServices(
-                    typeof(ProjectNameApplicationModule).GetAssembly()
+                    typeof(StrApplicationModule).GetAssembly()
                 );
 
             //Send All Exceptions To Clients Angular only in develop/staging

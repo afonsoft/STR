@@ -13,13 +13,13 @@ namespace Eaf.Str.Migrator
     {
         public Log Log { get; private set; }
 
-        private readonly ProjectNameDbMigrator _migrator;
+        private readonly StrDbMigrator _migrator;
         private readonly IEafStartupConfiguration _startupConfiguration;
         private readonly DefaultConnectionStringResolver _connectionStringResolver;
 
         public MigrateExecuter(
             Log log,
-            ProjectNameDbMigrator migrator,
+            StrDbMigrator migrator,
             IEafStartupConfiguration startupConfiguration,
             DefaultConnectionStringResolver connectionStringResolver
         )

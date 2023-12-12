@@ -11,7 +11,7 @@ namespace Eaf.Str.EntityHistory
 {
     public static class EntityHistoryHelper
     {
-        public static readonly Type[] ProjectNameTrackedTypes =
+        public static readonly Type[] StrTrackedTypes =
         {
             typeof(Role),
             typeof(Tenant),
@@ -21,7 +21,7 @@ namespace Eaf.Str.EntityHistory
             typeof(Airplane)
         };
 
-        public static Type[] TrackedTypes { get; } = ProjectNameTrackedTypes
+        public static Type[] TrackedTypes { get; } = StrTrackedTypes
             .GroupBy(type => type.FullName)
             .Select(types => types.First())
             .ToArray();

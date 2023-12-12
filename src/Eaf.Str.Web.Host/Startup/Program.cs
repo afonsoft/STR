@@ -32,7 +32,7 @@ namespace Eaf.Str.Web.Startup
             return new WebHostBuilder()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseEafSerilog()
-                .UseEafConfiguration(prefix: "ProjectName_")
+                .UseEafConfiguration(prefix: "Str_")
                 .UseKestrel(opt =>
                 {
                     opt.AddServerHeader = false;

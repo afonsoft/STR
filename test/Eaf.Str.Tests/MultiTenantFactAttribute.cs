@@ -4,7 +4,7 @@ namespace Eaf.Str.Tests
 {
     public sealed class MultiTenantFactAttribute : FactAttribute
     {
-        private readonly bool _multiTenancyEnabled = ProjectNameConsts.MultiTenancyEnabled;
+        private readonly bool _multiTenancyEnabled = StrConsts.MultiTenancyEnabled;
 
         public MultiTenantFactAttribute()
         {

@@ -21,7 +21,7 @@ namespace Eaf.Str.Test.Base
     /// This is base class for all our test classes.
     /// It prepares ABP system, modules and a fake, in-memory database.
     /// Seeds database with initial data.
-    /// Provides methods to easily work with <see cref="ProjectNameDbContext"/>.
+    /// Provides methods to easily work with <see cref="StrDbContext"/>.
     /// </summary>
     public abstract class AppTestBase<T> : EafIntegratedTestBase<T> where T : EafModule
     {
@@ -33,7 +33,7 @@ namespace Eaf.Str.Test.Base
 
         private void SeedTestData()
         {
-            void NormalizeDbContext(ProjectNameDbContext context)
+            void NormalizeDbContext(StrDbContext context)
             {
                 context.EntityChangeEventHelper = NullEntityChangeEventHelper.Instance;
                 context.EventBus = NullEventBus.Instance;
@@ -57,31 +57,31 @@ namespace Eaf.Str.Test.Base
             return new DisposeAction(() => EafSession.TenantId = previousTenantId);
         }
 
-        protected void UsingDbContext(Action<ProjectNameDbContext> action)
+        protected void UsingDbContext(Action<StrDbContext> action)
         {
             UsingDbContext(EafSession.TenantId, action);
         }
 
-        protected Task UsingDbContextAsync(Func<ProjectNameDbContext, Task> action)
+        protected Task UsingDbContextAsync(Func<StrDbContext, Task> action)
         {
             return UsingDbContextAsync(EafSession.TenantId, action);
         }
 
-        protected TResult UsingDbContext<TResult>(Func<ProjectNameDbContext, TResult> func)
+        protected TResult UsingDbContext<TResult>(Func<StrDbContext, TResult> func)
         {
             return UsingDbContext(EafSession.TenantId, func);
         }
 
-        protected Task<TResult> UsingDbContextAsync<TResult>(Func<ProjectNameDbContext, Task<TResult>> func)
+        protected Task<TResult> UsingDbContextAsync<TResult>(Func<StrDbContext, Task<TResult>> func)
         {
             return UsingDbContextAsync(EafSession.TenantId, func);
         }
 
-        protected void UsingDbContext(int? tenantId, Action<ProjectNameDbContext> action)
+        protected void UsingDbContext(int? tenantId, Action<StrDbContext> action)
         {
             using (UsingTenantId(tenantId))
             {
-                using (var context = LocalIocManager.Resolve<ProjectNameDbContext>())
+                using (var context = LocalIocManager.Resolve<StrDbContext>())
                 {
                     action(context);
                     context.SaveChanges();
@@ -89,11 +89,11 @@ namespace Eaf.Str.Test.Base
             }
         }
 
-        protected async Task UsingDbContextAsync(int? tenantId, Func<ProjectNameDbContext, Task> action)
+        protected async Task UsingDbContextAsync(int? tenantId, Func<StrDbContext, Task> action)
         {
             using (UsingTenantId(tenantId))
             {
-                using (var context = LocalIocManager.Resolve<ProjectNameDbContext>())
+                using (var context = LocalIocManager.Resolve<StrDbContext>())
                 {
                     await action(context);
                     await context.SaveChangesAsync();
@@ -101,13 +101,13 @@ namespace Eaf.Str.Test.Base
             }
         }
 
-        protected TResult UsingDbContext<TResult>(int? tenantId, Func<ProjectNameDbContext, TResult> func)
+        protected TResult UsingDbContext<TResult>(int? tenantId, Func<StrDbContext, TResult> func)
         {
             TResult result;
 
             using (UsingTenantId(tenantId))
             {
-                using (var context = LocalIocManager.Resolve<ProjectNameDbContext>())
+                using (var context = LocalIocManager.Resolve<StrDbContext>())
                 {
                     result = func(context);
                     context.SaveChanges();
@@ -117,13 +117,13 @@ namespace Eaf.Str.Test.Base
             return result;
         }
 
-        protected async Task<TResult> UsingDbContextAsync<TResult>(int? tenantId, Func<ProjectNameDbContext, Task<TResult>> func)
+        protected async Task<TResult> UsingDbContextAsync<TResult>(int? tenantId, Func<StrDbContext, Task<TResult>> func)
         {
             TResult result;
 
             using (UsingTenantId(tenantId))
             {
-                using (var context = LocalIocManager.Resolve<ProjectNameDbContext>())
+                using (var context = LocalIocManager.Resolve<StrDbContext>())
                 {
                     result = await func(context);
                     await context.SaveChangesAsync();

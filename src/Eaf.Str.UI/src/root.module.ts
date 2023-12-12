@@ -61,10 +61,10 @@ export function appInitializerFactory(
 function initializeLocalForage() {
     localForage.config({
         driver: localForage.LOCALSTORAGE,
-        name: 'ProjectName',
+        name: 'Str',
         version: 1.0,
         storeName: 'projectName',
-        description: 'Cached data for ProjectName'
+        description: 'Cached data for Str'
     });
 }
 

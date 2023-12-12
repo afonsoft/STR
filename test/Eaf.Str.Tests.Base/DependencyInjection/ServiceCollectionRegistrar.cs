@@ -15,21 +15,21 @@ namespace Eaf.Str.Test.Base.DependencyInjection
         {
             RegisterIdentity(iocManager);
 
-            var builder = new DbContextOptionsBuilder<ProjectNameDbContext>();
+            var builder = new DbContextOptionsBuilder<StrDbContext>();
 
             var inMemorySqlite = new SqliteConnection("Data Source=:memory:");
             builder.UseSqlite(inMemorySqlite);
 
             iocManager.IocContainer.Register(
                 Component
-                    .For<DbContextOptions<ProjectNameDbContext>>()
+                    .For<DbContextOptions<StrDbContext>>()
                     .Instance(builder.Options)
                     .LifestyleSingleton()
             );
 
             inMemorySqlite.Open();
 
-            new ProjectNameDbContext(builder.Options).Database.EnsureCreated();
+            new StrDbContext(builder.Options).Database.EnsureCreated();
         }
 
         private static void RegisterIdentity(IIocManager iocManager)

@@ -6,7 +6,7 @@
 		<AssemblyName>Eaf.Str.Web.Host</AssemblyName>
 		<OutputType>Exe</OutputType>
 		<PackageId>Eaf.Str.Web.Host</PackageId>
-		<UserSecretsId>Eaf-ProjectName-894FDFC1-6482-4A56-926A-3C46C9FE0329</UserSecretsId>
+		<UserSecretsId>Eaf-Str-894FDFC1-6482-4A56-926A-3C46C9FE0329</UserSecretsId>
 		<RootNamespace>Eaf.Str.Web</RootNamespace>
 		<AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel> 
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

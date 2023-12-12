@@ -12,7 +12,7 @@ namespace Eaf.Str.Airplanes.Exporting
             ITempFileCacheManager tempFileCacheManager
         ) :base(tempFileCacheManager)
         {
-            LocalizationSourceName = ProjectNameConsts.LocalizationSourceName;
+            LocalizationSourceName = StrConsts.LocalizationSourceName;
         }
 
         public FileDto ExportToFile(List<AirplaneDto> airplanes)

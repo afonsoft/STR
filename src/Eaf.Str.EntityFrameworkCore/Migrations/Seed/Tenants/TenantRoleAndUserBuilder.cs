@@ -14,10 +14,10 @@ namespace Eaf.Str.Migrations.Seed.Tenants
 {
     public class TenantRoleAndUserBuilder
     {
-        private readonly ProjectNameDbContext _context;
+        private readonly StrDbContext _context;
         private readonly int _tenantId;
 
-        public TenantRoleAndUserBuilder(ProjectNameDbContext context, int tenantId)
+        public TenantRoleAndUserBuilder(StrDbContext context, int tenantId)
         {
             _context = context;
             _tenantId = tenantId;

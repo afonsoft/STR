@@ -9,7 +9,7 @@ using Hangfire.Server;
 
 namespace Eaf.Str.Airplanes
 {
-    public class AirplaneManager : ProjectNameDomainServiceBase, IAirplaneManager
+    public class AirplaneManager : StrDomainServiceBase, IAirplaneManager
     {
         private readonly IRepository<Airplane> _repositoryAirplane;
         private readonly IChatCommunicator _chatCommunicator;

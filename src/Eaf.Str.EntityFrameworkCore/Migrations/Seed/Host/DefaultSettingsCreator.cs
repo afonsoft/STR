@@ -12,11 +12,11 @@ namespace Eaf.Str.Migrations.Seed.Host
 {
     public class DefaultSettingsCreator
     {
-        private readonly ProjectNameDbContext _context;
+        private readonly StrDbContext _context;
         private readonly MicrosoftExternalLoginProviderSettings microsoftExternalLogin;
         private readonly AuthZeroExternalLoginProviderSettings authZeroExternalLogin;
 
-        public DefaultSettingsCreator(ProjectNameDbContext context)
+        public DefaultSettingsCreator(StrDbContext context)
         {
             _context = context;
             microsoftExternalLogin = new MicrosoftExternalLoginProviderSettings

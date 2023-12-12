@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 
 namespace Eaf.Str.Airplanes
 {
-    [EafAuthorize(ProjectNamePermissions.Pages_Airplanes)]
-    public class AirplanesAppService : ProjectNameAppServiceBase, IAirplanesAppService
+    [EafAuthorize(StrPermissions.Pages_Airplanes)]
+    public class AirplanesAppService : StrAppServiceBase, IAirplanesAppService
     {
         private readonly IAirplaneJob _airplaneJob;
         private readonly IAirplaneManager _airplaneManager;
@@ -26,7 +26,7 @@ namespace Eaf.Str.Airplanes
             IAirplanesExcelExporter airplanesExcelExporter
         )
         {
-            LocalizationSourceName = ProjectNameConsts.LocalizationSourceName;
+            LocalizationSourceName = StrConsts.LocalizationSourceName;
 
             _airplaneJob = airplaneJob;
             _airplaneManager = airplaneManager;
@@ -45,7 +45,7 @@ namespace Eaf.Str.Airplanes
             return new PagedResultDto<AirplaneDto>(total, ObjectMapper.Map<List<AirplaneDto>>(items));
         }
 
-        [EafAuthorize(ProjectNamePermissions.Pages_Airplanes_Edit)]
+        [EafAuthorize(StrPermissions.Pages_Airplanes_Edit)]
         public async Task<CreateOrEditAirplaneDto> GetAirplaneForEdit(EntityDto input)
         {
             var airplane = await _airplaneManager.GetByIdAsync(input.Id);
@@ -60,7 +60,7 @@ namespace Eaf.Str.Airplanes
                 await Create(input);
         }
 
-        [EafAuthorize(ProjectNamePermissions.Pages_Airplanes_Create)]
+        [EafAuthorize(StrPermissions.Pages_Airplanes_Create)]
         private async Task Create(CreateOrEditAirplaneDto input)
         {
             var airplane = ObjectMapper.Map<Airplane>(input);
@@ -71,7 +71,7 @@ namespace Eaf.Str.Airplanes
             await _airplaneManager.CreateAsync(airplane);
         }
 
-        [EafAuthorize(ProjectNamePermissions.Pages_Airplanes_Edit)]
+        [EafAuthorize(StrPermissions.Pages_Airplanes_Edit)]
         private async Task Update(CreateOrEditAirplaneDto input)
         {
             var airplane = await _airplaneManager.GetByIdAsync(input.Id.Value);
@@ -79,7 +79,7 @@ namespace Eaf.Str.Airplanes
             await _airplaneManager.UpdateAsync(airplane);
         }
 
-        [EafAuthorize(ProjectNamePermissions.Pages_Airplanes_Delete)]
+        [EafAuthorize(StrPermissions.Pages_Airplanes_Delete)]
         public async Task Delete(EntityDto input)
         {
             await _airplaneManager.DeleteAsync(input.Id);

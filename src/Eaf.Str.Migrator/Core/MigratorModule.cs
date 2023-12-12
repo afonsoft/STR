@@ -12,12 +12,12 @@ using System.Reflection;
 
 namespace Eaf.Str.Migrator
 {
-    [DependsOn(typeof(ProjectNameEntityFrameworkCoreModule))]
+    [DependsOn(typeof(StrEntityFrameworkCoreModule))]
     public class MigratorModule : EafModule
     {
         private readonly IConfigurationRoot _appConfiguration;
 
-        public MigratorModule(ProjectNameEntityFrameworkCoreModule eafMiddlewareTemplateEntityFrameworkCoreModule)
+        public MigratorModule(StrEntityFrameworkCoreModule eafMiddlewareTemplateEntityFrameworkCoreModule)
         {
             eafMiddlewareTemplateEntityFrameworkCoreModule.SkipDbSeed = true;
 

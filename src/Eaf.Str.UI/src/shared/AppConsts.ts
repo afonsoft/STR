@@ -20,7 +20,7 @@ export class AppConsts {
     };
 
     static readonly localization = {
-        defaultLocalizationSourceName: 'ProjectName',
+        defaultLocalizationSourceName: 'Str',
         defaultLocalizationSourceNameEaf: 'Eaf'
     };
 

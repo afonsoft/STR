@@ -21,7 +21,7 @@ namespace Eaf.Str.Tests.Localization
     {
         private readonly ILanguageAppService _languageAppService;
         private readonly IApplicationLanguageManager _languageManager;
-        private readonly bool _multiTenancyEnabled = ProjectNameConsts.MultiTenancyEnabled;
+        private readonly bool _multiTenancyEnabled = StrConsts.MultiTenancyEnabled;
 
         public LanguageAppService_Tests()
         {
@@ -121,7 +121,7 @@ namespace Eaf.Str.Tests.Localization
             await _languageAppService.UpdateLanguageText(
                 new UpdateLanguageTextInput
                 {
-                    SourceName = ProjectNameConsts.LocalizationSourceName,
+                    SourceName = StrConsts.LocalizationSourceName,
                     LanguageName = "en",
                     Key = "Save",
                     Value = "save-new-value"
@@ -129,7 +129,7 @@ namespace Eaf.Str.Tests.Localization
 
             var newValue = Resolve<ILocalizationManager>()
                 .GetString(
-                    ProjectNameConsts.LocalizationSourceName,
+                    StrConsts.LocalizationSourceName,
                     "Save",
                     CultureInfo.GetCultureInfo("en")
                 );

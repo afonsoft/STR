@@ -20,7 +20,7 @@ namespace Eaf.Str.Tests.Localization
 
             var localizationManager = Resolve<ILocalizationManager>();
 
-            localizationManager.GetString(ProjectNameConsts.LocalizationSourceName, "Identity.UserNotInRole")
+            localizationManager.GetString(StrConsts.LocalizationSourceName, "Identity.UserNotInRole")
                 .ShouldBe("User is not in role '{0}'.");
         }
     }

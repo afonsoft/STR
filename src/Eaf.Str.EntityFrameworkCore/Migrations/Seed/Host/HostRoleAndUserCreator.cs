@@ -11,9 +11,9 @@ namespace Eaf.Str.Migrations.Seed.Host
 {
     public class HostRoleAndUserCreator
     {
-        private readonly ProjectNameDbContext _context;
+        private readonly StrDbContext _context;
 
-        public HostRoleAndUserCreator(ProjectNameDbContext context)
+        public HostRoleAndUserCreator(StrDbContext context)
         {
             _context = context;
         }

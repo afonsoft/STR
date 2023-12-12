@@ -3,7 +3,7 @@ using Eaf.Str.Test.Base;
 
 namespace Eaf.Str.Tests
 {
-    [DependsOn(typeof(ProjectNameTestBaseModule))]
+    [DependsOn(typeof(StrTestBaseModule))]
     public class NewTemplateTestModule : EafModule
     {
     }
