@@ -100,10 +100,10 @@ namespace Eaf.Str.Web.Startup
                 {
                     Version = "v1",
                     Title = "Str API",
-                    Description = "Str",
+                    Description = "Sistema de transporte e rastreamento",
                     Contact = new OpenApiContact
                     {
-                        Name = "Str",
+                        Name = "Transportation and tracking system",
                         Email = "Str@afonsoft.com.br"
                     },
                     License = new OpenApiLicense
