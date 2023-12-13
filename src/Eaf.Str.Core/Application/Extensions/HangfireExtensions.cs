@@ -11,9 +11,9 @@ namespace Eaf.Str.Application.Extensions
     {
         public static void ScheduleRecurringJobs(this IApplicationBuilder app)
         {
-            RecurringJob.AddOrUpdate<IAirplaneManager>("DateUpdateProcess", x => x.DateUpdate(null), Cron.Minutely, TimeZoneInfo.Local);
+            RecurringJob.AddOrUpdate<IAirplaneManager>("DateUpdateProcess", x => x.DateUpdate(null), Cron.Monthly, TimeZoneInfo.Local);
             var backgroundJobManager = app.ApplicationServices.GetService(typeof(IBackgroundJobManager)) as IBackgroundJobManager;
-            backgroundJobManager.EnqueueAsync<AirportsJob, bool>(false);
+            backgroundJobManager.EnqueueAsync<IAirportsJob, bool>(false);
         }
     }
 }

@@ -84,6 +84,8 @@ namespace Eaf.Str.Airports.Jobs
                                 {
                                     var airport = _objectMapper.Map<Airport>(item);
                                     airport.IATACode = item.IATACode.ToUpper();
+                                    if (airport.ICAOCode == null)
+                                        airport.ICAOCode = airport.IATACode;
                                     airport.CreationTime = Clock.Now;
                                     airport.CreatorUserId = 2;
                                     await _repository.InsertOrUpdateAndGetIdAsync(airport);
