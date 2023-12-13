@@ -7,6 +7,7 @@ using Eaf.Middleware.Friendships;
 using Eaf.Middleware.MultiTenancy;
 using Eaf.Middleware.Storage;
 using Eaf.Str.Airplanes;
+using Eaf.Str.Airports;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
@@ -17,6 +18,7 @@ namespace Eaf.Str.EntityFrameworkCore
         /* Define an IDbSet for each entity of the application */
 
         public virtual DbSet<Airplane> Airplanes { get; set; }
+        public virtual DbSet<Airport> Airports { get; set; }
 
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
 

@@ -1,8 +1,6 @@
 using Eaf.BackgroundJobs;
 using Eaf.Str.Airplanes;
-using Eaf.Str.Airplanes.Jobs;
 using Eaf.Str.Airports.Jobs;
-using Eaf.Timing;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using System;

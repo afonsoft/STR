@@ -18,4 +18,3 @@ namespace Eaf.Str.Airports.Jobs
         }
     }
 }
-}
