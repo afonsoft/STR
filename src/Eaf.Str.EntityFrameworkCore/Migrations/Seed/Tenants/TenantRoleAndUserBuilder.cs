@@ -39,8 +39,8 @@ namespace Eaf.Str.Migrations.Seed.Tenants
             var adminUser = _context.Users.IgnoreQueryFilters().FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == EafUserBase.AdminUserName);
             if (adminUser == null)
             {
-                adminUser = User.CreateTenantAdminUser(_tenantId, "projectname@afonsoft.com.br");
-                adminUser.Surname = "projectname";
+                adminUser = User.CreateTenantAdminUser(_tenantId, "contato@afonsoft.com.br");
+                adminUser.Surname = "Str";
                 adminUser.IsEmailConfirmed = true;
                 adminUser.IsActive = true;
                 adminUser.ShouldChangePasswordOnNextLogin = true;
