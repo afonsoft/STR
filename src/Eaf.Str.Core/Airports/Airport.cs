@@ -1,10 +1,12 @@
 ﻿using Eaf.Auditing;
 using Eaf.Domain.Entities.Auditing;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Eaf.Str.Airports
 {
+    [Index(nameof(IATACode), IsUnique = true)]
     [Table("Airports")]
     [Audited]
     public class Airport : FullAuditedEntity
