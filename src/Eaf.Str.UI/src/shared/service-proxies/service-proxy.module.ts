@@ -28,6 +28,12 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.FileServiceProxy,
         ApiServiceProxies.FriendshipServiceProxy,
         ApiServiceProxies.ChatServiceProxy,
+        ApiServiceProxies.AboutServiceProxy,
+        ApiServiceProxies.WebhookSubscriptionServiceProxy,
+        ApiServiceProxies.AirportsServiceProxy,
+        ApiServiceProxies.AwbServiceProxy,
+        ApiServiceProxies.TrackingsServiceProxy,
+        ApiServiceProxies.ViaCepServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: EafHttpInterceptor, multi: true }
     ]
 })
