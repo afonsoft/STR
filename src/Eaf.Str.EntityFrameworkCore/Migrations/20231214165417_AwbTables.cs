@@ -68,13 +68,13 @@ namespace Eaf.Str.Migrations
                         column: x => x.RecipientId,
                         principalTable: "AwbAddress",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Awb_AwbAddress_SenderId",
                         column: x => x.SenderId,
                         principalTable: "AwbAddress",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
