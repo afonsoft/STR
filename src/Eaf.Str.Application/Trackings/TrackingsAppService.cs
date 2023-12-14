@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Eaf.Str.Trackings
 {
     [EafAllowAnonymous]
-    public class TrackingsAppService : ITrackingsAppService
+    public class TrackingsAppService : StrAppServiceBase, ITrackingsAppService
     {
         [EafAuthorize(StrPermissions.Pages_Tracking_Create)]
         public Task Create(CreateOrEditTrackingDto input)
@@ -18,7 +18,7 @@ namespace Eaf.Str.Trackings
         }
 
         [EafAuthorize(StrPermissions.Pages_Tracking_Delete)]
-        public Task Delete(EntityDto input)
+        public Task Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -30,7 +30,7 @@ namespace Eaf.Str.Trackings
         }
 
         [EafAuthorize(StrPermissions.Pages_Tracking_Edit)]
-        public Task<TrackingDto> GetForEdit(EntityDto input)
+        public Task<TrackingDto> GetForEdit(int id)
         {
             throw new NotImplementedException();
         }

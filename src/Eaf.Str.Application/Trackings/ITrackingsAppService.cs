@@ -12,12 +12,12 @@ namespace Eaf.Str.Trackings
 
         Task<IList<TrackingDto>> GetTracking(string trackingNumber);
 
-        Task<TrackingDto> GetForEdit(EntityDto input);
+        Task<TrackingDto> GetForEdit(int id);
 
         Task Create(CreateOrEditTrackingDto input);
 
         Task Update(CreateOrEditTrackingDto input);
 
-        Task Delete(EntityDto input);
+        Task Delete(int id);
     }
 }
