@@ -60,6 +60,7 @@ namespace Eaf.Str.Web.Startup
         public override void PostInitialize()
         {
             ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
         }
     }
 }

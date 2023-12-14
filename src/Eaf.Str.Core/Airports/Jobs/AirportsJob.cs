@@ -28,7 +28,7 @@ namespace Eaf.Str.Airports.Jobs
         {
             _repository = repository;
             _objectMapper = objectMapper;
-            _httpClient = httpClientFactory.CreateClient("Airports");
+            _httpClient = httpClientFactory.CreateClient("AirportsHttpClient");
             _httpClient.Timeout = TimeSpan.FromMinutes(5);
             _unitOfWorkManager = unitOfWorkManager;
         }
