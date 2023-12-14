@@ -23,6 +23,7 @@ namespace Eaf.Str.EntityFrameworkCore
         public virtual DbSet<AwbAddress> AwbAddress { get; set; }
         public virtual DbSet<AwbItem> AwbItens { get; set; }
         public virtual DbSet<Awb> Awb { get; set; }
+        public virtual DbSet<Tracking> Trackings { get; set; }
 
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
 

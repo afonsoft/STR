@@ -18,6 +18,6 @@
 		<PackageReference Include="Eaf.Middleware.Application" Version="6.1.3" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Awbs\" />
+	  <Folder Include="Awbs\Dtos\" />
 	</ItemGroup>
 </Project>

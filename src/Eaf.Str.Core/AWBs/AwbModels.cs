@@ -175,4 +175,25 @@ namespace Eaf.Str.AWBs
         public virtual ICollection<AwbItem> Itens { get; set; }
         public int? TenantId { get; set; }
     }
+
+    [Index(nameof(TrackingNumber), nameof(Date), IsUnique = false, AllDescending = true)]
+    [Table("Tracking")]
+    [Audited]
+    public class Tracking : FullAuditedEntity
+    {
+        /// <summary>
+        ///  Numero do Rastreio
+        /// </summary>
+        [Required]
+        [StringLength(50)]
+        public string TrackingNumber { get; set; }
+
+        [StringLength(255)]
+        public string Description { get; set; }
+
+        [StringLength(128)]
+        public string DescriptionType { get; set; }
+
+        public DateTimeOffset Date { get; set; }
+    }
 }
