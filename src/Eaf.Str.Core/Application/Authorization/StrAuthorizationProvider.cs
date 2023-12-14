@@ -24,6 +24,11 @@ namespace Eaf.Str.Authorization
             tracking.CreateChildPermission(StrPermissions.Pages_Tracking_Create, L("CreateNewTracking"));
             tracking.CreateChildPermission(StrPermissions.Pages_Tracking_Edit, L("EditTracking"));
             tracking.CreateChildPermission(StrPermissions.Pages_Tracking_Delete, L("DeleteTracking"));
+
+            var awb = pages.CreateChildPermission(StrPermissions.Pages_Awb, L("Awb"));
+            awb.CreateChildPermission(StrPermissions.Pages_Awb_Create, L("CreateNewAwb"));
+            awb.CreateChildPermission(StrPermissions.Pages_Awb_Edit, L("EditAwb"));
+            awb.CreateChildPermission(StrPermissions.Pages_Awb_Delete, L("DeleteAwb"));
         }
 
         private static ILocalizableString L(string name)

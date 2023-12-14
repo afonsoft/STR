@@ -1,4 +1,5 @@
-﻿using Eaf.Str.ViaCep.Dtos;
+﻿using Eaf.Authorization;
+using Eaf.Str.ViaCep.Dtos;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Eaf.Str.ViaCep
 {
+    [EafAllowAnonymous]
     public class ViaCepAppService : IViaCepAppService
     {
         private const string ZipCodeSizeErrorMessage = "Invalid ZipCode Size";

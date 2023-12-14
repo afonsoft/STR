@@ -16,5 +16,12 @@ namespace Eaf.Str.Authorization
         public const string Pages_Tracking_Delete = "Pages.Tracking.Delete";
         public const string Pages_Tracking_Create = "Pages.Tracking.Create";
         public const string Pages_Tracking_Edit = "Pages.Tracking.Edit";
+
+        public const string Pages_Awb = "Pages.Awb";
+        public const string Pages_Awb_Delete = "Pages.Awb.Delete";
+        public const string Pages_Awb_Create = "Pages.Awb.Create";
+        public const string Pages_Awb_Edit = "Pages.Awb.Edit";
+
+        public const string Pages_Cep = "Pages.Cep";
     }
 }
