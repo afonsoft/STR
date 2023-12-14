@@ -1,9 +1,13 @@
 ﻿using Eaf.Application.Services.Dto;
 using Eaf.Authorization;
+using Eaf.Domain.Repositories;
 using Eaf.Str.Authorization;
+using Eaf.Str.AWBs;
 using Eaf.Str.Trackings.Dtos;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 
 namespace Eaf.Str.Trackings
@@ -11,40 +15,67 @@ namespace Eaf.Str.Trackings
     [EafAllowAnonymous]
     public class TrackingsAppService : StrAppServiceBase, ITrackingsAppService
     {
-        [EafAuthorize(StrPermissions.Pages_Tracking_Create)]
-        public Task Create(CreateOrEditTrackingDto input)
+        private readonly IRepository<Tracking> _repository;
+
+        public TrackingsAppService(IRepository<Tracking> repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+
+        [EafAuthorize(StrPermissions.Pages_Tracking_Create)]
+        public async Task<int> Create(CreateOrEditTrackingDto input)
+        {
+            var tracking = ObjectMapper.Map<Tracking>(input);
+
+            return await _repository.InsertAndGetIdAsync(tracking);
         }
 
         [EafAuthorize(StrPermissions.Pages_Tracking_Delete)]
         public Task Delete(int id)
         {
-            throw new NotImplementedException();
+            return _repository.DeleteAsync(id);
         }
 
         [EafAuthorize(StrPermissions.Pages_Tracking)]
-        public Task<PagedResultDto<TrackingDto>> GetAll(GetTrackingInput input)
+        public async Task<PagedResultDto<TrackingDto>> GetAll(GetTrackingInput input)
         {
-            throw new NotImplementedException();
+            var query = _repository.GetAll()
+                .WhereIf(!string.IsNullOrWhiteSpace(input.Filter),
+                    e => e.TrackingNumber.Contains(input.Filter));
+
+            var total = await query.CountAsync();
+            var items = await query.OrderBy(input.Sorting ?? "id asc").PageBy(input).ToListAsync();
+
+            return new PagedResultDto<TrackingDto>(total, ObjectMapper.Map<List<TrackingDto>>(items));
         }
 
         [EafAuthorize(StrPermissions.Pages_Tracking_Edit)]
-        public Task<TrackingDto> GetForEdit(int id)
+        public async Task<TrackingDto> GetForEdit(int id)
         {
-            throw new NotImplementedException();
+            var tracking = await _repository.GetAll().FirstAsync(x => x.Id == id);
+            return ObjectMapper.Map<TrackingDto>(tracking);
         }
 
         [EafAllowAnonymous]
-        public Task<IList<TrackingDto>> GetTracking(string trackingNumber)
+        public async Task<IList<TrackingDto>> GetTracking(string trackingNumber)
         {
-            throw new NotImplementedException();
+            var itens = await _repository.GetAll()
+                .Where(x => x.TrackingNumber == trackingNumber)
+                .OrderBy(x => x.Date)
+                .ToListAsync();
+            return ObjectMapper.Map<IList<TrackingDto>>(itens);
         }
 
         [EafAuthorize(StrPermissions.Pages_Tracking_Edit)]
-        public Task Update(CreateOrEditTrackingDto input)
+        public async Task Update(CreateOrEditTrackingDto input)
         {
-            throw new NotImplementedException();
+            var tracking = await _repository.GetAll().FirstAsync(x => x.Id == input.Id.Value);
+
+            tracking.Description = input.Description;
+            tracking.DescriptionType = input.DescriptionType;
+            tracking.TrackingNumber = input.TrackingNumber;
+
+            await _repository.UpdateAsync(tracking);
         }
     }
 }

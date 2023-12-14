@@ -14,7 +14,7 @@ namespace Eaf.Str.Trackings
 
         Task<TrackingDto> GetForEdit(int id);
 
-        Task Create(CreateOrEditTrackingDto input);
+        Task<int> Create(CreateOrEditTrackingDto input);
 
         Task Update(CreateOrEditTrackingDto input);
 
