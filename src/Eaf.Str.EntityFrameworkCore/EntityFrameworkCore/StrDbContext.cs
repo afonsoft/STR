@@ -8,6 +8,7 @@ using Eaf.Middleware.MultiTenancy;
 using Eaf.Middleware.Storage;
 using Eaf.Str.Airplanes;
 using Eaf.Str.Airports;
+using Eaf.Str.AWBs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
@@ -19,6 +20,9 @@ namespace Eaf.Str.EntityFrameworkCore
 
         public virtual DbSet<Airplane> Airplanes { get; set; }
         public virtual DbSet<Airport> Airports { get; set; }
+        public virtual DbSet<AwbAddress> AwbAddress { get; set; }
+        public virtual DbSet<AwbItem> AwbItens { get; set; }
+        public virtual DbSet<Awb> Awb { get; set; }
 
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
 
