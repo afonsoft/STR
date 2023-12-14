@@ -4,8 +4,8 @@ import { AppComponentBase } from '@shared/common/app-component-base';
 import { FlatFeatureDto, NameValueDto } from '@shared/service-proxies/service-proxies';
 import { ArrayToTreeConverterService } from '@shared/utils/array-to-tree-converter.service';
 import { TreeDataHelperService } from '@shared/utils/tree-data-helper.service';
-import { TreeNode } from 'primeng/api';
 import * as _ from 'lodash';
+import { TreeNode } from 'primeng/api';
 
 @Component({
   selector: 'feature-tree',
@@ -60,9 +60,9 @@ export class FeatureTreeComponent extends AppComponentBase {
 
   setSelectedNodes(val: FeatureTreeEditModel) {
     _.forEach(val.features, feature => {
-      let items = _.filter(val.featureValues, { name: feature.name });
+      const items = _.filter(val.featureValues, { name: feature.name });
       if (items && items.length === 1) {
-        let item = items[0];
+        const item = items[0];
         this.setSelectedNode(item.name, item.value);
       } else {
         this.setSelectedNode(feature.name, feature.defaultValue);
@@ -88,10 +88,10 @@ export class FeatureTreeComponent extends AppComponentBase {
       return [];
     }
 
-    let features: NameValueDto[] = [];
+    const features: NameValueDto[] = [];
 
     for (let i = 0; i < this._editData.features.length; i++) {
-      let feature = new NameValueDto();
+      const feature = new NameValueDto();
       feature.name = this._editData.features[i].name;
       feature.value = this.getFeatureValueByName(feature.name);
 
@@ -187,7 +187,7 @@ export class FeatureTreeComponent extends AppComponentBase {
     let result = true;
 
     _.forEach(this._editData.features, feature => {
-      let value = this.getFeatureValueByName(feature.name);
+      const value = this.getFeatureValueByName(feature.name);
       if (!this.isFeatureValueValid(feature.name, value)) {
         result = false;
       }
@@ -207,14 +207,14 @@ export class FeatureTreeComponent extends AppComponentBase {
 
   isFeatureSelected(name: string): boolean {
     // let nodes = _.filter(this.selectedFeatures, { data: { name: name } });
-    let nodes = _.filter(this.selectedFeatures, function (o) {
+    const nodes = _.filter(this.selectedFeatures, function (o) {
       return o.data.name == name;
     });
     return nodes && nodes.length === 1;
   }
 
   getFeatureValueByName(featureName: string): string {
-    let feature = this._treeDataHelperService.findNode(this.treeData, { data: { name: featureName } });
+    const feature = this._treeDataHelperService.findNode(this.treeData, { data: { name: featureName } });
     if (!feature) {
       return null;
     }

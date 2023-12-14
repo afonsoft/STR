@@ -1,11 +1,13 @@
-using System;
-using System.Linq;
 using Eaf.Application.Features;
 using Eaf.Configuration;
 using Eaf.Middleware.Authorization.Roles;
 using Eaf.Middleware.Authorization.Users;
 using Eaf.Middleware.MultiTenancy;
 using Eaf.Str.Airplanes;
+using Eaf.Str.Airports;
+using Eaf.Str.AWBs;
+using System;
+using System.Linq;
 
 namespace Eaf.Str.EntityHistory
 {
@@ -18,7 +20,12 @@ namespace Eaf.Str.EntityHistory
             typeof(User),
             typeof(Setting),
             typeof(FeatureSetting),
-            typeof(Airplane)
+            typeof(Airplane),
+            typeof(AwbAddress),
+            typeof(AwbItem),
+            typeof(Awb),
+            typeof(Tracking),
+            typeof(Airport)
         };
 
         public static Type[] TrackedTypes { get; } = StrTrackedTypes

@@ -2,8 +2,9 @@ import { Component, Injector, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { EntityDto, TenantServiceProxy, UpdateTenantFeaturesInput } from '@shared/service-proxies/service-proxies';
 import { ModalDirective } from 'ngx-bootstrap';
-import { FeatureTreeComponent } from '../shared/feature-tree.component';
 import { finalize } from 'rxjs/operators';
+
+import { FeatureTreeComponent } from '../shared/feature-tree.component';
 
 @Component({
   selector: 'tenantFeaturesModal',
@@ -11,7 +12,7 @@ import { finalize } from 'rxjs/operators';
 })
 export class TenantFeaturesModalComponent extends AppComponentBase {
   @ViewChild('tenantFeaturesModal', { static: true }) modal: ModalDirective;
-  @ViewChild('featureTree', { static: true }) featureTree: FeatureTreeComponent;
+  @ViewChild(FeatureTreeComponent, { static: true }) featureTree: FeatureTreeComponent;
 
   active = false;
   saving = false;
@@ -31,15 +32,14 @@ export class TenantFeaturesModalComponent extends AppComponentBase {
   show(tenantId: number, tenantName: string): void {
     this.tenantId = tenantId;
     this.tenantName = tenantName;
+    this.modal.show();
     this.active = true;
     this.loadFeatures();
-    this.modal.show();
   }
 
   loadFeatures(): void {
-    const self = this;
-    self._tenantService.getTenantFeaturesForEdit(this.tenantId).subscribe(result => {
-      self.featureTree.editData = result;
+    this._tenantService.getTenantFeaturesForEdit(this.tenantId).subscribe(result => {
+      this.featureTree.editData = result;
     });
   }
 
