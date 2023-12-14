@@ -113,7 +113,7 @@ namespace Eaf.Str.AWBs
         public int? TenantId { get; set; }
     }
 
-    [Index(nameof(TrackingNumber), IsUnique = false)]
+    [Index(nameof(TrackingNumber), IsUnique = true)]
     [Table("Awb")]
     [Audited]
     public class Awb : FullAuditedEntity, IMayHaveTenant
@@ -121,6 +121,7 @@ namespace Eaf.Str.AWBs
         /// <summary>
         ///  Numero do Rastreio
         /// </summary>
+        [Required]
         [StringLength(50)]
         public string TrackingNumber { get; set; }
 
