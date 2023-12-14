@@ -1,4 +1,5 @@
 ﻿using Eaf.Auditing;
+using Eaf.Domain.Entities;
 using Eaf.Domain.Entities.Auditing;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +12,7 @@ namespace Eaf.Str.AWBs
     [Index(nameof(ZipCode), IsUnique = false)]
     [Table("AwbAddress")]
     [Audited]
-    public class AwbAddress : FullAuditedEntity
+    public class AwbAddress : FullAuditedEntity, IMayHaveTenant
     {
         /// <summary>
         /// Cep
@@ -65,12 +66,14 @@ namespace Eaf.Str.AWBs
         /// </summary>
         [StringLength(512)]
         public string PersonName { get; set; }
+
+        public int? TenantId { get; set; }
     }
 
     [Index(nameof(Invoice), IsUnique = false)]
     [Table("AwbItens")]
     [Audited]
-    public class AwbItem : FullAuditedEntity
+    public class AwbItem : FullAuditedEntity, IMayHaveTenant
     {
         /// <summary>
         /// Peso
@@ -101,12 +104,14 @@ namespace Eaf.Str.AWBs
         /// </summary>
         [StringLength(128)]
         public string MaterialType { get; set; }
+
+        public int? TenantId { get; set; }
     }
 
     [Index(nameof(TrackingNumber), IsUnique = false)]
     [Table("Awb")]
     [Audited]
-    public class Awb : FullAuditedEntity
+    public class Awb : FullAuditedEntity, IMayHaveTenant
     {
         /// <summary>
         ///  Numero do Rastreio
@@ -156,5 +161,6 @@ namespace Eaf.Str.AWBs
         public string ReceivedDocument { get; set; }
 
         public virtual ICollection<AwbItem> Itens { get; set; }
+        public int? TenantId { get; set; }
     }
 }
