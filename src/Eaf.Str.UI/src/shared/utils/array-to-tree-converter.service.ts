@@ -3,47 +3,39 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class ArrayToTreeConverterService {
+  createTree(array: any[], parentIdProperty, idProperty, parentIdValue, childrenProperty: string, fieldMappings): any {
+    const tree = [];
+    debugger;
+    const nodes = _.filter(array, [parentIdProperty, parentIdValue]);
 
-    createTree(array: any[], parentIdProperty, idProperty, parentIdValue, childrenProperty: string, fieldMappings): any {
-        let tree = [];
+    _.forEach(nodes, node => {
+      const newNode = {
+        data: node,
+      };
 
-        let nodes = _.filter(array, [parentIdProperty, parentIdValue]);
+      this.mapFields(node, newNode, fieldMappings);
 
-        _.forEach(nodes, node => {
-            let newNode = {
-                data: node
-            };
+      newNode[childrenProperty] = this.createTree(array, parentIdProperty, idProperty, node[idProperty], childrenProperty, fieldMappings);
 
-            this.mapFields(node, newNode, fieldMappings);
+      tree.push(newNode);
+    });
 
-            newNode[childrenProperty] = this.createTree(
-                array,
-                parentIdProperty,
-                idProperty,
-                node[idProperty],
-                childrenProperty,
-                fieldMappings
-            );
+    return tree;
+  }
 
-            tree.push(newNode);
-        });
+  mapFields(node, newNode, fieldMappings): void {
+    _.forEach(fieldMappings, fieldMapping => {
+      if (!fieldMapping['target']) {
+        return;
+      }
 
-        return tree;
-    }
-
-    mapFields(node, newNode, fieldMappings): void {
-        _.forEach(fieldMappings, fieldMapping => {
-            if (!fieldMapping['target']) {
-                return;
-            }
-
-            if (fieldMapping.hasOwnProperty('value')) {
-                newNode[fieldMapping['target']] = fieldMapping['value'];
-            } else if (fieldMapping['source']) {
-                newNode[fieldMapping['target']] = node[fieldMapping['source']];
-            } else if (fieldMapping['targetFunction']) {
-                newNode[fieldMapping['target']] = fieldMapping['targetFunction'](node);
-            }
-        });
-    }
+      if (fieldMapping.hasOwnProperty('value')) {
+        newNode[fieldMapping['target']] = fieldMapping['value'];
+      } else if (fieldMapping['source']) {
+        newNode[fieldMapping['target']] = node[fieldMapping['source']];
+      } else if (fieldMapping['targetFunction']) {
+        newNode[fieldMapping['target']] = fieldMapping['targetFunction'](node);
+      }
+    });
+  }
 }

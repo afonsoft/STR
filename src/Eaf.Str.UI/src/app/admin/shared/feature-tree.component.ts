@@ -18,6 +18,9 @@ export class FeatureTreeComponent extends AppComponentBase {
     this._editData = val;
     this.setTreeData(val.features);
     this.setSelectedNodes(val);
+    console.log(val);
+    console.log(this.treeData);
+    console.log(this.selectedFeatures);
   }
 
   treeData: any;

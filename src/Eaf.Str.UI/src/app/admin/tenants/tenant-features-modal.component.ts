@@ -12,7 +12,7 @@ import { FeatureTreeComponent } from '../shared/feature-tree.component';
 })
 export class TenantFeaturesModalComponent extends AppComponentBase {
   @ViewChild('tenantFeaturesModal', { static: true }) modal: ModalDirective;
-  @ViewChild(FeatureTreeComponent, { static: true }) featureTree: FeatureTreeComponent;
+  @ViewChild('featureTree', { static: true }) featureTree: FeatureTreeComponent;
 
   active = false;
   saving = false;
@@ -30,10 +30,10 @@ export class TenantFeaturesModalComponent extends AppComponentBase {
   }
 
   show(tenantId: number, tenantName: string): void {
+    this.active = true;
+    this.modal.show();
     this.tenantId = tenantId;
     this.tenantName = tenantName;
-    this.modal.show();
-    this.active = true;
     this.loadFeatures();
   }
 
