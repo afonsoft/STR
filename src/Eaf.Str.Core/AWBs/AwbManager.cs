@@ -31,47 +31,47 @@ namespace Eaf.Str.AWBs
 
         public Task<AwbAddress> CreateAddressAsync(AwbAddress input)
         {
-            throw new System.NotImplementedException();
+            return _awbAddressRepository.InsertOrUpdateAsync(input);
         }
 
         public Task<Awb> CreateAwbAsync(Awb input)
         {
-            throw new System.NotImplementedException();
+            return _awbRepository.InsertOrUpdateAsync(input);
         }
 
         public Task<AwbItem> CreateItemAsync(AwbItem input)
         {
-            throw new System.NotImplementedException();
+            return _awbItemRepository.InsertOrUpdateAsync(input);
         }
 
         public Task DeleteAddressAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return _awbAddressRepository.DeleteAsync(id);
         }
 
         public Task DeleteAwbAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return _awbRepository.DeleteAsync(id);
         }
 
         public Task DeleteItemAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return _awbItemRepository.DeleteAsync(id);
         }
 
         public Task<AwbAddress> UpdateAddressAsync(AwbAddress input)
         {
-            throw new System.NotImplementedException();
+            return _awbAddressRepository.UpdateAsync(input);
         }
 
         public Task<Awb> UpdateAwbAsync(Awb input)
         {
-            throw new System.NotImplementedException();
+            return _awbRepository.UpdateAsync(input);
         }
 
         public Task<AwbItem> UpdateItemAsync(AwbItem input)
         {
-            throw new System.NotImplementedException();
+            return _awbItemRepository.UpdateAsync(input);
         }
     }
 }
