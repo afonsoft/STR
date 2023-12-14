@@ -2175,9 +2175,11 @@ namespace Eaf.Str.Migrations
 
             modelBuilder.Entity("Eaf.Str.AWBs.AwbItem", b =>
                 {
-                    b.HasOne("Eaf.Str.AWBs.Awb", null)
+                    b.HasOne("Eaf.Str.AWBs.Awb", "Awb")
                         .WithMany("Itens")
                         .HasForeignKey("AwbId");
+
+                    b.Navigation("Awb");
                 });
 
             modelBuilder.Entity("Eaf.Webhooks.WebhookSendAttempt", b =>

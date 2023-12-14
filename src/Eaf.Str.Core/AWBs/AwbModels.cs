@@ -75,6 +75,11 @@ namespace Eaf.Str.AWBs
     [Audited]
     public class AwbItem : FullAuditedEntity, IMayHaveTenant
     {
+        public int? AwbId { get; set; }
+
+        [ForeignKey(nameof(AwbId))]
+        public Awb Awb { get; set; }
+
         /// <summary>
         /// Peso
         /// </summary>
@@ -119,16 +124,22 @@ namespace Eaf.Str.AWBs
         [StringLength(50)]
         public string TrackingNumber { get; set; }
 
+        public int RecipientId { get; set; }
+
         /// <summary>
         /// Destinatário
         /// </summary>
         [Required]
+        [ForeignKey(nameof(RecipientId))]
         public AwbAddress Recipient { get; set; }
+
+        public int SenderId { get; set; }
 
         /// <summary>
         /// Remetente
         /// </summary>
         [Required]
+        [ForeignKey(nameof(SenderId))]
         public AwbAddress Sender { get; set; }
 
         /// <summary>
