@@ -52,9 +52,9 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Eaf.Castle.Serilog" Version="6.1.3" />
-		<PackageReference Include="Eaf.Middleware.Web.Core" Version="6.1.3" />
-		<PackageReference Include="Eaf.OpenTelemetry" Version="6.1.3" />
+		<PackageReference Include="Eaf.Castle.Serilog" Version="6.1.4" />
+		<PackageReference Include="Eaf.Middleware.Web.Core" Version="6.1.4" />
+		<PackageReference Include="Eaf.OpenTelemetry" Version="6.1.4" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Kubernetes.Tools.Targets" Version="1.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
