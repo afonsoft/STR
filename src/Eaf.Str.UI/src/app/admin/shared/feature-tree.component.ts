@@ -35,7 +35,7 @@ export class FeatureTreeComponent extends AppComponentBase {
   }
 
   setTreeData(permissions: FlatFeatureDto[]) {
-    this.treeData = this._arrayToTreeConverterService.createTree(permissions, 'parentName', 'name', null, 'children', [
+    this.treeData = this._arrayToTreeConverterService.createTree(permissions, 'parentName', 'name', undefined, 'children', [
       {
         target: 'label',
         source: 'displayName',

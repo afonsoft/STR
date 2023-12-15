@@ -5,7 +5,6 @@ import * as _ from 'lodash';
 export class ArrayToTreeConverterService {
   createTree(array: any[], parentIdProperty, idProperty, parentIdValue, childrenProperty: string, fieldMappings): any {
     const tree = [];
-    debugger;
     const nodes = _.filter(array, [parentIdProperty, parentIdValue]);
 
     _.forEach(nodes, node => {
