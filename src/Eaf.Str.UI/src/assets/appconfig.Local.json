@@ -1,6 +1,6 @@
 {
-  "remoteServiceBaseUrl": "http://localhost:8001",
-  "appBaseUrl": "http://localhost:8000",
+  "remoteServiceBaseUrl": "https://str-api.afonsoft.com.br",
+  "appBaseUrl": "https://str.afonsoft.com.br",
   "localeMappings": [
     {
       "from": "pt-BR",
