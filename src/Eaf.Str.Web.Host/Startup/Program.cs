@@ -39,7 +39,7 @@ namespace Eaf.Str.Web.Startup
                     opt.Limits.MaxRequestLineSize = 16 * 1024;
                 })
                .UseIISIntegration()
-               /* .UseIIS() //For Windows IIS */
+               .UseIIS() //For Windows IIS
                .UseStartup<Startup>();
         }
     }
