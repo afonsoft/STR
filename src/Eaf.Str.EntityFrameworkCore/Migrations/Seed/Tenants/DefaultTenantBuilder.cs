@@ -26,7 +26,14 @@ namespace Eaf.Str.Migrations.Seed.Tenants
                 _context.Tenants.Add(defaultTenant);
                 _context.SaveChanges();
             }
-        }
 
+            var colinterTenant = _context.Tenants.IgnoreQueryFilters().FirstOrDefault(t => t.TenancyName == "Colinter");
+            if (colinterTenant == null)
+            {
+                colinterTenant = new Tenant("Colinter", "Colinter Courier do Brasil");
+                _context.Tenants.Add(colinterTenant);
+                _context.SaveChanges();
+            }
+        }
     }
 }
