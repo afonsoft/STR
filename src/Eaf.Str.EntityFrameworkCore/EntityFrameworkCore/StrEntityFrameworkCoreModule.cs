@@ -44,9 +44,9 @@ namespace Eaf.Str.EntityFrameworkCore
                     }
 
                     if (options.ExistingConnection != null)
-                        StrDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection, Configuration.Database.IsOracleEnabled);
+                        StrDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection, Configuration.Database.IsOracleEnabled, Configuration.Database.IsMySqlEnabled);
                     else
-                        StrDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString, Configuration.Database.IsOracleEnabled);
+                        StrDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString, Configuration.Database.IsOracleEnabled, Configuration.Database.IsMySqlEnabled);
                 });
             }
 

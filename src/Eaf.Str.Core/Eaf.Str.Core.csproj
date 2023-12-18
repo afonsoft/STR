@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="..\..\common.props"></Import>
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>Eaf.Str.Core</AssemblyName>
 		<PackageId>Eaf.Str.Core</PackageId>
 		<UserSecretsId>Eaf-Str-894FDFC1-6482-4A56-926A-3C46C9FE0329</UserSecretsId>
@@ -12,8 +12,8 @@
 		<EmbeddedResource Include="Application\Localization\Str\Str.xml" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Eaf.Middleware.Core" Version="6.1.*" />
-		<PackageReference Include="Eaf.TextTemplating" Version="6.1.*" />
+		<PackageReference Include="Eaf.Middleware.Core" Version="6.1.5" />
+		<PackageReference Include="Eaf.TextTemplating" Version="6.1.5" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 	</ItemGroup>
 </Project>

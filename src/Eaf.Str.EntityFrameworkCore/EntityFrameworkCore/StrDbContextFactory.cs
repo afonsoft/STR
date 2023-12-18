@@ -19,9 +19,14 @@ namespace Eaf.Str.EntityFrameworkCore
         {
             var builder = new DbContextOptionsBuilder<StrDbContext>();
             var configuration = GetConfigurationRoot();
-            var isOracleEnabled = Convert.ToBoolean(configuration["Database:IsOracleEnabled"]);
+            var isOracleEnabled = false;
+            var IsMySqlEnabled = false;
+            if (configuration["Database:IsOracleEnabled"] != null)
+                isOracleEnabled = Convert.ToBoolean(configuration["Database:IsOracleEnabled"]);
+            if (configuration["Database:IsMySqlEnabled"] != null)
+                IsMySqlEnabled = Convert.ToBoolean(configuration["Database:IsMySqlEnabled"]);
 
-            StrDbContextConfigurer.Configure(builder, configuration.GetConnectionString(StrConsts.ConnectionStringName), isOracleEnabled);
+            StrDbContextConfigurer.Configure(builder, configuration.GetConnectionString(StrConsts.ConnectionStringName), isOracleEnabled, IsMySqlEnabled);
 
             return new StrDbContext(builder.Options);
         }
