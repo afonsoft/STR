@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="..\..\common.props"></Import>
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -8,6 +8,7 @@
 		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Eaf.EntityFrameworkCore" Version="6.1.6" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
 			<PrivateAssets>all</PrivateAssets>
