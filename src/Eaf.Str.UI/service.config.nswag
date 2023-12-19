@@ -3,7 +3,7 @@
   "defaultVariables": null,
   "documentGenerator": {
     "fromDocument": {
-      "url": "http://localhost:8001/swagger/v1/swagger.json",
+      "url": "https://str-api.afonsoft.com.br/swagger/v1/swagger.json",
       "output": null,
       "newLineBehavior": "Auto"
     }
