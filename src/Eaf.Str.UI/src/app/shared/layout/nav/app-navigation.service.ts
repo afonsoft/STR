@@ -1,8 +1,8 @@
+import { Injectable, Injector } from '@angular/core';
 import { PermissionCheckerService } from '@eaf/auth/permission-checker.service';
-import { AppSessionService } from '@shared/common/session/app-session.service';
-import { Injector } from '@angular/core';
 import { LocalizationService } from '@eaf/localization/localization.service';
-import { Injectable } from '@angular/core';
+import { AppSessionService } from '@shared/common/session/app-session.service';
+
 import { AppMenu } from './app-menu';
 import { AppMenuItem } from './app-menu-item';
 
@@ -22,6 +22,7 @@ export class AppNavigationService {
       new AppMenuItem('Dashboard', 'Pages.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
       new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-squares-4', '/app/admin/tenants'),
       new AppMenuItem('Airplanes', 'Pages.Airplanes', 'flaticon-paper-plane', '/app/main/airplanes'),
+      new AppMenuItem('Awb', 'Pages.Awb', 'flaticon-paper-plane', '/app/main/awb'),
     ]);
   }
 
@@ -41,7 +42,7 @@ export class AppNavigationService {
 
   checkChildMenuItemPermission(menuItem): boolean {
     for (let i = 0; i < menuItem.items.length; i++) {
-      let subMenuItem = menuItem.items[i];
+      const subMenuItem = menuItem.items[i];
 
       if (subMenuItem.permissionName && this._permissionCheckerService.isGranted(subMenuItem.permissionName)) {
         return true;
