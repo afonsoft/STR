@@ -20,8 +20,8 @@
 		<ProjectReference Include="..\..\src\Eaf.Str.EntityFrameworkCore\Eaf.Str.EntityFrameworkCore.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Eaf.Middleware.Web.Core" Version="6.1.6" />
-		<PackageReference Include="Eaf.TestBase" Version="6.1.6" />
+		<PackageReference Include="Eaf.Middleware.Web.Core" Version="6.1.7" />
+		<PackageReference Include="Eaf.TestBase" Version="6.1.7" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
