@@ -35,6 +35,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AwbComponent } from './awb/awb.component';
 import { CepComponent } from './cep/cep.component';
+import { TrackingComponent } from './tracking/tracking.component';
 
 NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
 
@@ -75,7 +76,7 @@ NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
       useFactory: adapterFactory,
     }),
   ],
-  declarations: [DashboardComponent, AirplanesComponent, CreateOrEditAirplaneModalComponent, AwbComponent, CepComponent],
+  declarations: [DashboardComponent, AirplanesComponent, CreateOrEditAirplaneModalComponent, AwbComponent, CepComponent, TrackingComponent],
   providers: [
     { provide: BsDatepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDatepickerConfig },
     { provide: BsDaterangepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDaterangepickerConfig },

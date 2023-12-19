@@ -22,8 +22,9 @@ export class AppNavigationService {
       new AppMenuItem('Dashboard', 'Pages.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
       new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-squares-4', '/app/admin/tenants'),
       new AppMenuItem('Airplanes', 'Pages.Airplanes', 'flaticon-paper-plane', '/app/main/airplanes'),
-      new AppMenuItem('Awb', 'Pages.Awb', 'flaticon-paper-plane', '/app/main/awb'),
-      new AppMenuItem('Cep', 'Pages.Awb', 'flaticon-squares-4', '/app/main/cep'),
+      new AppMenuItem('AWB', 'Pages.Awb', 'flaticon-paper-plane', '/app/main/awb'),
+      new AppMenuItem('Cep', 'Pages.Tracking', 'flaticon-squares-4', '/app/main/cep'),
+      new AppMenuItem('Tracking', 'Pages.Tracking', 'flaticon-line-graph', '/app/main/tracking'),
     ]);
   }
 

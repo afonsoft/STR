@@ -5,6 +5,7 @@ import { AirplanesComponent } from './airplanes/airplanes.component';
 import { AwbComponent } from './awb/awb.component';
 import { CepComponent } from './cep/cep.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TrackingComponent } from './tracking/tracking.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
           { path: 'airplanes', component: AirplanesComponent, data: { permission: 'Pages.Airplanes' } },
           { path: 'dashboard', component: DashboardComponent, data: { permission: 'Pages.Dashboard' } },
           { path: 'awb', component: AwbComponent, data: { permission: 'Pages.Awb' } },
-          { path: 'cep', component: CepComponent, data: { permission: 'Pages.Awb' } },
+          { path: 'cep', component: CepComponent, data: { permission: 'Pages.Tracking' } },
+          { path: 'tracking', component: TrackingComponent, data: { permission: 'Pages.Tracking' } },
         ],
       },
     ]),
