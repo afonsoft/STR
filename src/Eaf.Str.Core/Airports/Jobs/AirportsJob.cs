@@ -1,18 +1,18 @@
 ﻿using Eaf.BackgroundJobs.Hangfire;
+using Eaf.Domain.Repositories;
+using Eaf.Domain.Uow;
+using Eaf.ObjectMapping;
+using Eaf.Timing;
+using Hangfire;
 using Hangfire.Console;
 using Hangfire.Server;
 using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
-using Eaf.Domain.Repositories;
-using Eaf.ObjectMapping;
-using Eaf.Domain.Uow;
-using Eaf.Timing;
-using System.ComponentModel;
-using Hangfire;
 
 namespace Eaf.Str.Airports.Jobs
 {
