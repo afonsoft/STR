@@ -34,6 +34,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AwbComponent } from './awb/awb.component';
+import { CepComponent } from './cep/cep.component';
 
 NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
 
@@ -74,7 +75,7 @@ NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
       useFactory: adapterFactory,
     }),
   ],
-  declarations: [DashboardComponent, AirplanesComponent, CreateOrEditAirplaneModalComponent, AwbComponent],
+  declarations: [DashboardComponent, AirplanesComponent, CreateOrEditAirplaneModalComponent, AwbComponent, CepComponent],
   providers: [
     { provide: BsDatepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDatepickerConfig },
     { provide: BsDaterangepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDaterangepickerConfig },
