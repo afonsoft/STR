@@ -1,13 +1,17 @@
 ﻿using Eaf.Application.Services.Dto;
 using Eaf.Authorization;
+using Eaf.Middleware.Dto;
+using Eaf.Str.Airplanes.Dtos;
 using Eaf.Str.Authorization;
 using Eaf.Str.Awbs.Dtos;
+using Eaf.Str.Awbs.Exporting;
 using Eaf.Str.AWBs;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Eaf.Str.Awbs
 {
@@ -15,10 +19,12 @@ namespace Eaf.Str.Awbs
     public class AwbAppService : StrAppServiceBase, IAwbAppService
     {
         private readonly IAwbManager _awbManager;
+        private readonly IAwbExcelExporter _awbExcelExporter;
 
-        public AwbAppService(IAwbManager awbManager)
+        public AwbAppService(IAwbManager awbManager, IAwbExcelExporter awbExcelExporter)
         {
             _awbManager = awbManager;
+            _awbExcelExporter = awbExcelExporter;
         }
 
         public async Task<string> CreateOrUpdate(CreateOrEditAwbDto input)
@@ -83,6 +89,18 @@ namespace Eaf.Str.Awbs
         {
             var awb = await _awbManager.Awbs.FirstOrDefaultAsync(x => x.Id == id);
             return ObjectMapper.Map<CreateOrEditAwbDto>(awb);
+        }
+
+        public async Task<FileDto> getAwbToExcel(string filter)
+        {
+            var query = _awbManager.Awbs
+              .WhereIf(!string.IsNullOrWhiteSpace(filter),
+                  e => e.TrackingNumber.Contains(filter)
+                    || e.Origin.Contains(filter)
+                    || e.Destiny.Contains(filter));
+
+            var items = await query.ToListAsync();
+            return _awbExcelExporter.ExportToFile(ObjectMapper.Map<List<AwbDto>>(items));
         }
     }
 }

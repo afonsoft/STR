@@ -1,9 +1,7 @@
-import { Injector, Component, ViewEncapsulation, Inject } from '@angular/core';
-
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, Injector, ViewEncapsulation } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/common/app-component-base';
-
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   templateUrl: './theme2-brand.component.html',
@@ -12,7 +10,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class Theme2BrandComponent extends AppComponentBase {
   remoteServiceBaseUrl: string = AppConsts.remoteServiceBaseUrl;
-  defaultLogo = AppConsts.appBaseUrl + '/assets/common/images/gol/gol-logo-on-' + this.currentTheme.baseSettings.header.headerSkin + '.svg';
+  defaultLogo = AppConsts.appBaseUrl + '/assets/common/images/eaf/eaf-' + this.currentTheme.baseSettings.header.headerSkin + '.png';
 
   constructor(
     injector: Injector,
