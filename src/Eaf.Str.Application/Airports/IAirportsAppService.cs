@@ -19,5 +19,7 @@ namespace Eaf.Str.Airports
         Task Delete(EntityDto input);
 
         Task<List<AirportDto>> GetByNameOrIata(string nameOrIata);
+
+        Task StartJob();
     }
 }

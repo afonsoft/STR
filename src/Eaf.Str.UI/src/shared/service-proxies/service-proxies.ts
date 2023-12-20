@@ -1038,8 +1038,8 @@ export class AirportsServiceProxy {
      * @param id (optional) 
      * @return Success
      */
-    getAirplaneForEdit(id: number | undefined): Observable<AirportDto> {
-        let url_ = this.baseUrl + "/api/services/app/Airports/GetAirplaneForEdit?";
+    getAirportForEdit(id: number | undefined): Observable<AirportDto> {
+        let url_ = this.baseUrl + "/api/services/app/Airports/GetAirportForEdit?";
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -1055,11 +1055,11 @@ export class AirportsServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAirplaneForEdit(response_);
+            return this.processGetAirportForEdit(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAirplaneForEdit(response_ as any);
+                    return this.processGetAirportForEdit(response_ as any);
                 } catch (e) {
                     return _observableThrow(e) as any as Observable<AirportDto>;
                 }
@@ -1068,7 +1068,7 @@ export class AirportsServiceProxy {
         }));
     }
 
-    protected processGetAirplaneForEdit(response: HttpResponseBase): Observable<AirportDto> {
+    protected processGetAirportForEdit(response: HttpResponseBase): Observable<AirportDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1209,6 +1209,67 @@ export class AirportsServiceProxy {
             }));
         }
         return _observableOf<AirportDto>(null as any);
+    }
+
+    /**
+     * @param nameOrIata (optional) 
+     * @return Success
+     */
+    getByNameOrIata(nameOrIata: string | null | undefined): Observable<AirportDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Airports/GetByNameOrIata?";
+        if (nameOrIata !== undefined && nameOrIata !== null)
+            url_ += "nameOrIata=" + encodeURIComponent("" + nameOrIata) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetByNameOrIata(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetByNameOrIata(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<AirportDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<AirportDto[]>;
+        }));
+    }
+
+    protected processGetByNameOrIata(response: HttpResponseBase): Observable<AirportDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(AirportDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AirportDto[]>(null as any);
     }
 }
 
@@ -1948,8 +2009,8 @@ export class AwbServiceProxy {
      * @param trackingNumber (optional) 
      * @return Success
      */
-    get(trackingNumber: string | null | undefined): Observable<AwbDto> {
-        let url_ = this.baseUrl + "/api/services/app/Awb/Get?";
+    getByTrackingNumber(trackingNumber: string | null | undefined): Observable<AwbDto> {
+        let url_ = this.baseUrl + "/api/services/app/Awb/GetByTrackingNumber?";
         if (trackingNumber !== undefined && trackingNumber !== null)
             url_ += "trackingNumber=" + encodeURIComponent("" + trackingNumber) + "&";
         url_ = url_.replace(/[?&]$/, "");
@@ -1963,11 +2024,11 @@ export class AwbServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGet(response_);
+            return this.processGetByTrackingNumber(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGet(response_ as any);
+                    return this.processGetByTrackingNumber(response_ as any);
                 } catch (e) {
                     return _observableThrow(e) as any as Observable<AwbDto>;
                 }
@@ -1976,7 +2037,61 @@ export class AwbServiceProxy {
         }));
     }
 
-    protected processGet(response: HttpResponseBase): Observable<AwbDto> {
+    protected processGetByTrackingNumber(response: HttpResponseBase): Observable<AwbDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AwbDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AwbDto>(null as any);
+    }
+
+    /**
+     * @param code (optional) 
+     * @return Success
+     */
+    getByCode(code: string | null | undefined): Observable<AwbDto> {
+        let url_ = this.baseUrl + "/api/services/app/Awb/GetByCode?";
+        if (code !== undefined && code !== null)
+            url_ += "code=" + encodeURIComponent("" + code) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetByCode(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetByCode(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<AwbDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<AwbDto>;
+        }));
+    }
+
+    protected processGetByCode(response: HttpResponseBase): Observable<AwbDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -10728,6 +10843,7 @@ export interface IAwbAddressDto {
 
 export class AwbDto implements IAwbDto {
     trackingNumber!: string;
+    code!: string;
     recipient!: AwbAddressDto;
     sender!: AwbAddressDto;
     origin!: string | undefined;
@@ -10762,6 +10878,7 @@ export class AwbDto implements IAwbDto {
     init(_data?: any) {
         if (_data) {
             this.trackingNumber = _data["trackingNumber"];
+            this.code = _data["code"];
             this.recipient = _data["recipient"] ? AwbAddressDto.fromJS(_data["recipient"]) : new AwbAddressDto();
             this.sender = _data["sender"] ? AwbAddressDto.fromJS(_data["sender"]) : new AwbAddressDto();
             this.origin = _data["origin"];
@@ -10796,6 +10913,7 @@ export class AwbDto implements IAwbDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["trackingNumber"] = this.trackingNumber;
+        data["code"] = this.code;
         data["recipient"] = this.recipient ? this.recipient.toJSON() : <any>undefined;
         data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
         data["origin"] = this.origin;
@@ -10823,6 +10941,7 @@ export class AwbDto implements IAwbDto {
 
 export interface IAwbDto {
     trackingNumber: string;
+    code: string;
     recipient: AwbAddressDto;
     sender: AwbAddressDto;
     origin: string | undefined;

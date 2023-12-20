@@ -17,5 +17,7 @@ namespace Eaf.Str.Airports
         Task<Airport> GetByIdAsync(int id);
 
         Task<Airport> GetByIATAAsync(string Iata);
+
+        Task<string> StartProcess();
     }
 }

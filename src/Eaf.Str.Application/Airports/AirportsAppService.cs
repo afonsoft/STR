@@ -98,5 +98,10 @@ namespace Eaf.Str.Airports
 
             return ObjectMapper.Map<List<AirportDto>>(query);
         }
+
+        public Task StartJob()
+        {
+            return _airportManager.StartProcess();
+        }
     }
 }

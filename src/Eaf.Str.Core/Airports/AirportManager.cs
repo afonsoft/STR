@@ -1,4 +1,8 @@
-﻿using Eaf.Domain.Repositories;
+﻿using Eaf.BackgroundJobs;
+using Eaf.Domain.Repositories;
+using Eaf.Str.Airplanes.Jobs;
+using Eaf.Str.Airports.Jobs;
+using Eaf.Timing;
 using Eaf.UI;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,10 +12,12 @@ namespace Eaf.Str.Airports
     public class AirportManager : StrDomainServiceBase, IAirportManager
     {
         private readonly IRepository<Airport> _repository;
+        private readonly IBackgroundJobManager _backgroundJobManager;
 
-        public AirportManager(IRepository<Airport> repository)
+        public AirportManager(IRepository<Airport> repository, IBackgroundJobManager backgroundJobManager)
         {
             _repository = repository;
+            _backgroundJobManager = backgroundJobManager;
         }
 
         public IQueryable<Airport> Airports => _repository.GetAll();
@@ -42,6 +48,11 @@ namespace Eaf.Str.Airports
         public async Task<Airport> UpdateAsync(Airport input)
         {
             return await _repository.UpdateAsync(input);
+        }
+
+        public async Task<string> StartProcess()
+        {
+            return await _backgroundJobManager.EnqueueAsync<IAirportsJob, bool>(false);
         }
     }
 }
