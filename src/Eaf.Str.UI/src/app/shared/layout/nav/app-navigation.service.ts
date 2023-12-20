@@ -20,11 +20,11 @@ export class AppNavigationService {
   getMenu(): AppMenu {
     return new AppMenu('MainMenu', 'MainMenu', [
       new AppMenuItem('Dashboard', 'Pages.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
-      new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-squares-4', '/app/admin/tenants'),
-      new AppMenuItem('Airplanes', 'Pages.Airplanes', 'flaticon-paper-plane', '/app/main/airplanes'),
+      new AppMenuItem('Tracking', 'Pages.Tracking', 'flaticon-line-graph', '/app/main/tracking'),
       new AppMenuItem('AWB', 'Pages.Awb', 'flaticon-paper-plane', '/app/main/awb'),
       new AppMenuItem('Cep', 'Pages.Tracking', 'flaticon-squares-4', '/app/main/cep'),
-      new AppMenuItem('Tracking', 'Pages.Tracking', 'flaticon-line-graph', '/app/main/tracking'),
+      new AppMenuItem('Airports', 'Pages.Airports', 'flaticon-squares-4', '/app/main/airports'),
+      new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-squares-4', '/app/admin/tenants'),
     ]);
   }
 
