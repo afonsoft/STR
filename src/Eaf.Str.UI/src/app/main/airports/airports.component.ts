@@ -29,6 +29,12 @@ export class AirportsComponent extends AppComponentBase implements OnInit {
   }
 
   ngOnInit(): void {}
+  startJob() {
+    this.dataTableHelper.showLoadingIndicator();
+    this._airportsServiceProxy.startJob().subscribe(() => {
+      this.dataTableHelper.hideLoadingIndicator();
+    });
+  }
 
   getAirports(event?: LazyLoadEvent) {
     if (this.dataTableHelper.shouldResetPaging(event)) {

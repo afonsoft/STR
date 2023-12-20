@@ -1,14 +1,15 @@
-import { Component, Injector, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
-import { AirplanesServiceProxy, AirplaneDto } from '@shared/service-proxies/service-proxies';
-import { AppComponentBase } from '@shared/common/app-component-base';
-import { CreateOrEditAirplaneModalComponent } from './create-or-edit-airplane-modal.component';
+import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { EntityTypeHistoryModalComponent } from '@app/shared/common/entityHistory/entity-type-history-modal.component';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { Table } from 'primeng/table';
+import { AppComponentBase } from '@shared/common/app-component-base';
+import { AirplaneDto, AirplanesServiceProxy } from '@shared/service-proxies/service-proxies';
+import { FileDownloadService } from '@shared/utils/file-download.service';
+import * as _ from 'lodash';
 import { Paginator } from 'primeng/paginator';
 import { LazyLoadEvent } from 'primeng/primeng';
-import { FileDownloadService } from '@shared/utils/file-download.service';
-import { EntityTypeHistoryModalComponent } from '@app/shared/common/entityHistory/entity-type-history-modal.component';
-import * as _ from 'lodash';
+import { Table } from 'primeng/table';
+
+import { CreateOrEditAirplaneModalComponent } from './create-or-edit-airplane-modal.component';
 
 @Component({
   templateUrl: './airplanes.component.html',
@@ -38,7 +39,7 @@ export class AirplanesComponent extends AppComponentBase implements OnInit {
 
   ngOnInit(): void {
     this.registerEvents();
-    let customSettings = (eaf as any).custom;
+    const customSettings = (eaf as any).custom;
     this.entityHistoryEnabled =
       customSettings.EntityHistory &&
       customSettings.EntityHistory.isEnabled &&
@@ -101,7 +102,10 @@ export class AirplanesComponent extends AppComponentBase implements OnInit {
   }
 
   startJob(): void {
-    this._airplanesServiceProxy.startJob().subscribe(result => {});
+    this.dataTableHelper.showLoadingIndicator();
+    this._airplanesServiceProxy.startJob().subscribe(() => {
+      this.dataTableHelper.hideLoadingIndicator();
+    });
   }
 
   registerEvents(): void {
