@@ -9,7 +9,9 @@ namespace Eaf.Str.Awbs
     {
         Task<PagedResultDto<AwbDto>> GetAll(GetAwbInput input);
 
-        Task<AwbDto> Get(string trackingNumber);
+        Task<AwbDto> GetByTrackingNumber(string trackingNumber);
+
+        Task<AwbDto> GetByCode(string code);
 
         Task<CreateOrEditAwbDto> GetForEdit(int id);
 

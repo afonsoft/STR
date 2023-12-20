@@ -125,6 +125,13 @@ namespace Eaf.Str.AWBs
         [StringLength(50)]
         public string TrackingNumber { get; set; }
 
+        /// <summary>
+        ///  Codigo do AWB Interno
+        /// </summary>
+        [Required]
+        [StringLength(50)]
+        public string Code { get; set; }
+
         public int RecipientId { get; set; }
 
         /// <summary>

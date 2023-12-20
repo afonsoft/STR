@@ -1,6 +1,7 @@
 ﻿using Eaf.Application.Services;
 using Eaf.Application.Services.Dto;
 using Eaf.Str.Airports.Dtos;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Eaf.Str.Airports
@@ -11,10 +12,12 @@ namespace Eaf.Str.Airports
 
         Task<AirportDto> GetByIATA(string iata);
 
-        Task<AirportDto> GetAirplaneForEdit(EntityDto input);
+        Task<AirportDto> GetAirportForEdit(EntityDto input);
 
         Task CreateOrEdit(AirportDto input);
 
         Task Delete(EntityDto input);
+
+        Task<List<AirportDto>> GetByNameOrIata(string nameOrIata);
     }
 }

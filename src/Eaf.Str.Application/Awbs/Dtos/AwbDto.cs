@@ -1,10 +1,9 @@
 ﻿using Eaf.Application.Services.Dto;
 using Eaf.AutoMapper;
 using Eaf.Str.AWBs;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Eaf.Str.Awbs.Dtos
 {
@@ -17,6 +16,13 @@ namespace Eaf.Str.Awbs.Dtos
         [Required]
         [StringLength(50)]
         public string TrackingNumber { get; set; }
+
+        /// <summary>
+        ///  Codigo do AWB Interno
+        /// </summary>
+        [Required]
+        [StringLength(50)]
+        public string Code { get; set; }
 
         /// <summary>
         /// Destinatário

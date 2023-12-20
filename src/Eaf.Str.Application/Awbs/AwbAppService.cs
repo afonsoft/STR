@@ -7,6 +7,7 @@ using Eaf.Str.Awbs.Dtos;
 using Eaf.Str.Awbs.Exporting;
 using Eaf.Str.AWBs;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
@@ -27,6 +28,7 @@ namespace Eaf.Str.Awbs
             _awbExcelExporter = awbExcelExporter;
         }
 
+        [EafAuthorize(StrPermissions.Pages_Awb)]
         public async Task<string> CreateOrUpdate(CreateOrEditAwbDto input)
         {
             if (input.Id.HasValue)
@@ -62,10 +64,27 @@ namespace Eaf.Str.Awbs
             await _awbManager.DeleteAwbAsync(id);
         }
 
-        [EafAuthorize(StrPermissions.Pages_Awb)]
-        public async Task<AwbDto> Get(string trackingNumber)
+        public async Task<AwbDto> GetByTrackingNumber(string trackingNumber)
         {
+            if (trackingNumber.IsNullOrEmpty())
+                throw new ArgumentNullException(nameof(trackingNumber), "trackingNumber is null or empty");
+
+            if (trackingNumber.Length <= 5 || trackingNumber.Length >= 50)
+                throw new ArgumentOutOfRangeException(nameof(trackingNumber), "trackingNumber has too few or too many characters.");
+
             var awb = await _awbManager.Awbs.FirstOrDefaultAsync(x => x.TrackingNumber.ToLower() == trackingNumber.ToLower());
+            return ObjectMapper.Map<AwbDto>(awb);
+        }
+
+        public async Task<AwbDto> GetByCode(string code)
+        {
+            if (code.IsNullOrEmpty())
+                throw new ArgumentNullException(nameof(code), "code is null or empty");
+
+            if (code.Length <= 1 || code.Length >= 50)
+                throw new ArgumentOutOfRangeException(nameof(code), "code has too few or too many characters.");
+
+            var awb = await _awbManager.Awbs.FirstOrDefaultAsync(x => x.Code.ToLower() == code.ToLower());
             return ObjectMapper.Map<AwbDto>(awb);
         }
 
