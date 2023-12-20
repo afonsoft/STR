@@ -12,7 +12,7 @@ namespace Eaf.Str.AWBs
     [Index(nameof(ZipCode), IsUnique = false)]
     [Table("AwbAddress")]
     [Audited]
-    public class AwbAddress : FullAuditedEntity, IMayHaveTenant
+    public class AwbAddress : FullAuditedEntity, IMustHaveTenant
     {
         /// <summary>
         /// Cep
@@ -67,13 +67,13 @@ namespace Eaf.Str.AWBs
         [StringLength(512)]
         public string PersonName { get; set; }
 
-        public int? TenantId { get; set; }
+        public int TenantId { get; set; }
     }
 
     [Index(nameof(Invoice), IsUnique = false)]
     [Table("AwbItens")]
     [Audited]
-    public class AwbItem : FullAuditedEntity, IMayHaveTenant
+    public class AwbItem : FullAuditedEntity, IMustHaveTenant
     {
         public int? AwbId { get; set; }
 
@@ -110,13 +110,13 @@ namespace Eaf.Str.AWBs
         [StringLength(128)]
         public string MaterialType { get; set; }
 
-        public int? TenantId { get; set; }
+        public int TenantId { get; set; }
     }
 
     [Index(nameof(TrackingNumber), IsUnique = true)]
     [Table("Awb")]
     [Audited]
-    public class Awb : FullAuditedEntity, IMayHaveTenant
+    public class Awb : FullAuditedEntity, IMustHaveTenant
     {
         /// <summary>
         ///  Numero do Rastreio
@@ -180,13 +180,13 @@ namespace Eaf.Str.AWBs
         public string ReceivedDocument { get; set; }
 
         public virtual ICollection<AwbItem> Itens { get; set; }
-        public int? TenantId { get; set; }
+        public int TenantId { get; set; }
     }
 
     [Index(nameof(TrackingNumber), nameof(Date), IsUnique = false, AllDescending = true)]
     [Table("Tracking")]
     [Audited]
-    public class Tracking : FullAuditedEntity
+    public class Tracking : FullAuditedEntity, IMustHaveTenant
     {
         /// <summary>
         ///  Numero do Rastreio
@@ -202,5 +202,6 @@ namespace Eaf.Str.AWBs
         public string DescriptionType { get; set; }
 
         public DateTimeOffset Date { get; set; }
+        public int TenantId { get; set; }
     }
 }

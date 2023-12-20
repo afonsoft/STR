@@ -43,7 +43,7 @@ namespace Eaf.Str.Awbs
             var awb = ObjectMapper.Map<Awb>(input);
 
             if (EafSession.TenantId != null)
-                awb.TenantId = EafSession.TenantId;
+                awb.TenantId = EafSession.TenantId.Value;
 
             await _awbManager.CreateAwbAsync(awb);
             return awb.TrackingNumber;
