@@ -1,1 +1,168 @@
-<p>cep works!</p>
+<div [@routerTransition]>
+    <div class="m-subheader">
+      <div class="row align-items-center">
+        <div class="mr-auto col-auto">
+          <h3 class="m-subheader__title m-subheader__title--separator">
+            <span>{{ 'Cep' | localize }}</span>
+          </h3>
+          <span class="m-section__sub">
+            {{ 'CepHeaderInfo' | localize }}
+          </span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="m-content">
+      <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__body">
+          <form autocomplete="off" class="horizontal-form">
+            <div class="m-form m-form--label-align-right">
+              <div class="row align-items-center m--margin-bottom-10">
+                <div class="col-xl-12">
+                  <label>{{ 'ZipCode' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="filters.filterText"
+                      name="filterText"
+                      class="form-control m-input"
+                      [placeholder]="l('SearchWithThreeDot')"
+                      [textMask]="{mask: mask}"
+                      type="text"
+                    />
+                    <span class="input-group-btn">
+                      <button (click)="getCep()" class="btn btn-primary" type="submit">
+                        <i class="flaticon-search-1" [attr.aria-label]="l('Search')"></i>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+  
+          <div class="align-items-center">
+            <div class="m-form m-form--label-align-right">
+              <div class="row align-items-center m--margin-bottom-10">
+                <div class="col-xl-2 col-2 col-xs-4">
+                  <label>{{ 'ZipCode' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.cep"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="col-xl-10 col-10 col-xs-8">
+                  <label>{{ 'Address' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.logradouro"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row align-items-center m--margin-bottom-10">
+                <div class="col-xl-5 col-5 col-xs-5">
+                  <label>{{ 'Neighborhood' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.bairro"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="col-xl-5 col-5 col-xs-5">
+                  <label>{{ 'City' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.localidade"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="col-xl-2 col-2 col-xs-2">
+                  <label>{{ 'State' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.uf"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row align-items-center m--margin-bottom-10">
+
+                <div class="col-xl-3 col-3 col-xs-3">
+                  <label>{{ 'IBGE' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.ibge"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-xl-3 col-3 col-xs-3">
+                  <label>{{ 'DDD' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.ddd"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-3 col-xs-3">
+                  <label>{{ 'GIA' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.gia"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="col-xl-3 col-3 col-xs-3">
+                  <label>{{ 'Siafi' | localize }} </label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="viaCepAddressDto.siafi"
+                      class="form-control m-input"
+                      disabled="disabled"
+                      readonly
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
