@@ -1,7 +1,6 @@
 ﻿using Eaf.Application.Services.Dto;
 using Eaf.Authorization;
 using Eaf.Middleware.Dto;
-using Eaf.Str.Airplanes.Dtos;
 using Eaf.Str.Authorization;
 using Eaf.Str.Awbs.Dtos;
 using Eaf.Str.Awbs.Exporting;
@@ -12,7 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Eaf.Str.Awbs
 {
@@ -29,7 +27,7 @@ namespace Eaf.Str.Awbs
         }
 
         [EafAuthorize(StrPermissions.Pages_Awb)]
-        public async Task<string> CreateOrUpdate(CreateOrEditAwbDto input)
+        public async Task<AwbDto> CreateOrUpdate(CreateOrEditAwbDto input)
         {
             if (input.Id.HasValue)
                 return await Update(input);
@@ -38,24 +36,22 @@ namespace Eaf.Str.Awbs
         }
 
         [EafAuthorize(StrPermissions.Pages_Awb_Create)]
-        private async Task<string> Create(CreateOrEditAwbDto input)
+        private async Task<AwbDto> Create(CreateOrEditAwbDto input)
         {
             var awb = ObjectMapper.Map<Awb>(input);
 
             if (EafSession.TenantId != null)
                 awb.TenantId = EafSession.TenantId.Value;
 
-            await _awbManager.CreateAwbAsync(awb);
-            return awb.TrackingNumber;
+            return ObjectMapper.Map<AwbDto>(await _awbManager.CreateAwbAsync(awb));
         }
 
         [EafAuthorize(StrPermissions.Pages_Awb_Edit)]
-        private async Task<string> Update(CreateOrEditAwbDto input)
+        private async Task<AwbDto> Update(CreateOrEditAwbDto input)
         {
             var awb = await _awbManager.Awbs.FirstOrDefaultAsync(x => x.Id == input.Id);
             ObjectMapper.Map(input, awb);
-            await _awbManager.UpdateAwbAsync(awb);
-            return awb.TrackingNumber;
+            return ObjectMapper.Map<AwbDto>(await _awbManager.UpdateAwbAsync(awb));
         }
 
         [EafAuthorize(StrPermissions.Pages_Awb_Delete)]

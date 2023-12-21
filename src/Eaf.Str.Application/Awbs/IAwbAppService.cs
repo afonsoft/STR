@@ -15,7 +15,7 @@ namespace Eaf.Str.Awbs
 
         Task<CreateOrEditAwbDto> GetForEdit(int id);
 
-        Task<string> CreateOrUpdate(CreateOrEditAwbDto input);
+        Task<AwbDto> CreateOrUpdate(CreateOrEditAwbDto input);
 
         Task Delete(int id);
     }

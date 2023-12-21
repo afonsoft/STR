@@ -13,7 +13,6 @@ namespace Eaf.Str.Awbs.Dtos
         /// <summary>
         ///  Numero do Rastreio
         /// </summary>
-        [Required]
         [StringLength(50)]
         public string TrackingNumber { get; set; }
 
