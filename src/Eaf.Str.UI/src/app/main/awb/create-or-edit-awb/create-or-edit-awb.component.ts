@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
-import { AwbDto, AwbServiceProxy, CreateOrEditAirplaneDto } from '@shared/service-proxies/service-proxies';
+import { AwbDto, AwbServiceProxy, CreateOrEditAwbDto } from '@shared/service-proxies/service-proxies';
 import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
 
@@ -16,7 +16,8 @@ export class CreateOrEditAwbComponent extends AppComponentBase {
   active = false;
   saving = false;
 
-  airplane: AwbDto = new AwbDto();
+  awb: AwbDto = new AwbDto();
+  awbCreate: CreateOrEditAwbDto = new  CreateOrEditAwbDto();
 
   
   constructor(
@@ -27,14 +28,14 @@ export class CreateOrEditAwbComponent extends AppComponentBase {
   }
   ngOnInit(): void {
   }
-  show(airplaneId?: number): void {
-    if (!airplaneId) {
-      this.airplane = new CreateOrEditAirplaneDto();
+  show(Id?: number): void {
+    if (!Id) {
+      this.awbCreate = new CreateOrEditAwbDto();
       this.active = true;
       this.modal.show();
     } else {
-      this._airplanesServiceProxy.getAirplaneForEdit(airplaneId).subscribe(result => {
-        this.airplane = result;
+      this._awbServiceProxy.getForEdit(Id).subscribe(result => {
+        this.awbCreate = result;
         this.active = true;
         this.modal.show();
       });

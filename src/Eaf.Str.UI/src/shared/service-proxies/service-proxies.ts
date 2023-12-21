@@ -1947,7 +1947,7 @@ export class AwbServiceProxy {
      * @param body (optional) 
      * @return Success
      */
-    createOrUpdate(body: CreateOrEditAwbDto | undefined): Observable<string> {
+    createOrUpdate(body: CreateOrEditAwbDto | undefined): Observable<AwbDto> {
         let url_ = this.baseUrl + "/api/services/app/Awb/CreateOrUpdate";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1970,14 +1970,14 @@ export class AwbServiceProxy {
                 try {
                     return this.processCreateOrUpdate(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<string>;
+                    return _observableThrow(e) as any as Observable<AwbDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<string>;
+                return _observableThrow(response_) as any as Observable<AwbDto>;
         }));
     }
 
-    protected processCreateOrUpdate(response: HttpResponseBase): Observable<string> {
+    protected processCreateOrUpdate(response: HttpResponseBase): Observable<AwbDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1988,8 +1988,7 @@ export class AwbServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-                result200 = resultData200 !== undefined ? resultData200 : <any>null;
-    
+            result200 = AwbDto.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1997,7 +1996,7 @@ export class AwbServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<string>(null as any);
+        return _observableOf<AwbDto>(null as any);
     }
 
     /**
@@ -11691,7 +11690,7 @@ export interface ICreateOrEditAirplaneDto {
 }
 
 export class CreateOrEditAwbDto implements ICreateOrEditAwbDto {
-    trackingNumber!: string;
+    trackingNumber!: string | undefined;
     recipient!: AwbAddressDto;
     sender!: AwbAddressDto;
     origin!: string | undefined;
@@ -11762,7 +11761,7 @@ export class CreateOrEditAwbDto implements ICreateOrEditAwbDto {
 }
 
 export interface ICreateOrEditAwbDto {
-    trackingNumber: string;
+    trackingNumber: string | undefined;
     recipient: AwbAddressDto;
     sender: AwbAddressDto;
     origin: string | undefined;
