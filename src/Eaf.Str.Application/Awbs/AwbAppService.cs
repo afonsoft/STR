@@ -40,7 +40,10 @@ namespace Eaf.Str.Awbs
         {
             var awb = ObjectMapper.Map<Awb>(input);
 
-            if (EafSession.TenantId != null)
+            if (awb.Code.IsNullOrEmpty())
+                awb.Code = Guid.NewGuid().ToString("D");
+
+            if (EafSession.TenantId != null && awb.TenantId <= 0)
                 awb.TenantId = EafSession.TenantId.Value;
 
             return ObjectMapper.Map<AwbDto>(await _awbManager.CreateAwbAsync(awb));
