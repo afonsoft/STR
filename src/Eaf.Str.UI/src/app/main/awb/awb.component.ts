@@ -7,6 +7,8 @@ import { Paginator } from 'primeng/paginator';
 import { LazyLoadEvent } from 'primeng/primeng';
 import { Table } from 'primeng/table';
 
+import { CreateOrEditAwbComponent } from './create-or-edit-awb/create-or-edit-awb.component';
+
 @Component({
   selector: 'app-awb',
   templateUrl: './awb.component.html',
@@ -17,6 +19,7 @@ import { Table } from 'primeng/table';
 export class AwbComponent extends AppComponentBase implements OnInit {
   @ViewChild('dataTable', { static: true }) dataTable: Table;
   @ViewChild('paginator', { static: true }) paginator: Paginator;
+  @ViewChild('createOrEditAwbModel', { static: true }) createOrEditAwbModel: CreateOrEditAwbComponent;
 
   filters: {
     filterText: string;
@@ -31,6 +34,10 @@ export class AwbComponent extends AppComponentBase implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  createAwb(): void {
+    this.createOrEditAwbModel.show();
+  }
 
   getAwbs(event?: LazyLoadEvent) {
     if (this.dataTableHelper.shouldResetPaging(event)) {
@@ -56,10 +63,6 @@ export class AwbComponent extends AppComponentBase implements OnInit {
 
   reloadPage(): void {
     this.paginator.changePage(this.paginator.getPage());
-  }
-
-  createAwb(): void {
-    //this.createOrEditAirplaneModal.show();
   }
 
   deleteAwb(awb: AwbDto): void {

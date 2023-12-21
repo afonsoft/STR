@@ -5,9 +5,9 @@ import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-create-or-edit-awb',
+  selector: 'createOrEditAwbModel',
   templateUrl: './create-or-edit-awb.component.html',
-  styleUrls: ['./create-or-edit-awb.component.css']
+  styleUrls: ['./create-or-edit-awb.component.css'],
 })
 export class CreateOrEditAwbComponent extends AppComponentBase {
   @ViewChild('createOrEditModal', { static: true }) modal: ModalDirective;
@@ -17,17 +17,15 @@ export class CreateOrEditAwbComponent extends AppComponentBase {
   saving = false;
 
   awb: AwbDto = new AwbDto();
-  awbCreate: CreateOrEditAwbDto = new  CreateOrEditAwbDto();
+  awbCreate: CreateOrEditAwbDto = new CreateOrEditAwbDto();
 
-  
   constructor(
     injector: Injector,
     private _awbServiceProxy: AwbServiceProxy,
   ) {
     super(injector);
   }
-  ngOnInit(): void {
-  }
+
   show(Id?: number): void {
     if (!Id) {
       this.awbCreate = new CreateOrEditAwbDto();
@@ -48,8 +46,8 @@ export class CreateOrEditAwbComponent extends AppComponentBase {
 
   save(): void {
     this.saving = true;
-    this._airplanesServiceProxy
-      .createOrEdit(this.airplane)
+    this._awbServiceProxy
+      .createOrUpdate(this.awbCreate)
       .pipe(
         finalize(() => {
           this.saving = false;
@@ -66,6 +64,4 @@ export class CreateOrEditAwbComponent extends AppComponentBase {
     this.active = false;
     this.modal.hide();
   }
-}
-
 }

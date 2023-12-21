@@ -14,32 +14,35 @@
       <form *ngIf="active" #AwbForm="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
         <div class="modal-header">
           <h4 class="modal-title">
-            <span *ngIf="airplane.id">{{ l('EditAirplane') }}</span>
-            <span *ngIf="!airplane.id">{{ l('CreateNewAirplane') }}</span>
+            <span *ngIf="awbCreate.id">{{ l('EditASwb') }}</span>
+            <span *ngIf="!awbCreate.id">{{ l('CreateNewAwb') }}</span>
           </h4>
           <button type="button" class="close" (click)="close()" aria-label="Close" [disabled]="saving">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label for="Number">{{ l('Number') }} *</label>
-            <input type="text" id="Number" class="form-control" autofocus [(ngModel)]="airplane.number" name="Number" required />
+
+          <div class="row align-items-center m--margin-bottom-10">
+            <div class="col-6 borderAwb">
+              logo
+            </div>
+            <div class="col-6 align-items-center align-text-center borderAwb">
+              BarCode
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="Model">{{ l('Model') }} *</label>
-            <input
-              type="text"
-              id="Model"
-              class="form-control"
-              [(ngModel)]="airplane.model"
-              name="Model"
-              minlength="1"
-              maxlength="256"
-              required
-            />
+          <div class="row align-items-center m--margin-bottom-10">
+            <div class="col-6 borderAwb">
+              Destino
+            </div>
+            <div class="col-6 borderAwb">
+              Rementende
+            </div>
           </div>
+
+
+
         </div>
         <div class="modal-footer">
           <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{ l('Cancel') }}</button>
