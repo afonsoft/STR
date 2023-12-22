@@ -18,5 +18,7 @@ namespace Eaf.Str.Awbs
         Task<AwbDto> CreateOrUpdate(CreateOrEditAwbDto input);
 
         Task Delete(int id);
+
+        byte[] GetBarCode(string barCode);
     }
 }

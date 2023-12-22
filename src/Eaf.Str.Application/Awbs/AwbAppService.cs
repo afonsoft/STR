@@ -1,4 +1,5 @@
-﻿using Eaf.Application.Services.Dto;
+﻿using BarcodeStandard;
+using Eaf.Application.Services.Dto;
 using Eaf.Authorization;
 using Eaf.Middleware.Dto;
 using Eaf.Str.Authorization;
@@ -8,6 +9,7 @@ using Eaf.Str.AWBs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -119,6 +121,17 @@ namespace Eaf.Str.Awbs
 
             var items = await query.ToListAsync();
             return _awbExcelExporter.ExportToFile(ObjectMapper.Map<List<AwbDto>>(items));
+        }
+
+        public byte[] GetBarCode(string barCode)
+        {
+            var code = new Barcode(barCode)
+            {
+                IncludeLabel = true,
+                EncodedType = BarcodeStandard.Type.Code11
+            };
+
+            return code.EncodedImageBytes;
         }
     }
 }
