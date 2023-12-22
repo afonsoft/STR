@@ -1,7 +1,28 @@
 .borderAwb {
-    border: 1px gray;
+    border: 1px solid #A5A5A5;
 }
 
 .align-text-center {
     text-align: center;
+}
+.align-vertical-center {
+    vertical-align: middle;
+}
+
+.borderAwbHeader {
+    background-color: #B8B8B8;
+    min-height: 150px;
+}
+
+.modal-larger {
+    max-width: 80%;
+    min-width: 50%;
+}
+
+.senderAwb {
+    min-height: 150px;
+}
+
+.receptAwb {
+    min-height: 50px;
 }

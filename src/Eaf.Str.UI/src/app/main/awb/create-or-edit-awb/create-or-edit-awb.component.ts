@@ -24,6 +24,7 @@ export class CreateOrEditAwbComponent extends AppComponentBase {
     private _awbServiceProxy: AwbServiceProxy,
   ) {
     super(injector);
+    this.dataTableHelper.defaultRecordsCountPerPage = 9999;
   }
 
   show(Id?: number): void {
