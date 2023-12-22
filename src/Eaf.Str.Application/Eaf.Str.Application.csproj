@@ -17,5 +17,6 @@
 	<ItemGroup>
 		<PackageReference Include="Eaf.Middleware.Application" Version="6.1.7" />
 		<PackageReference Include="QrCoder.Core" Version="1.0.1" />
+		<PackageReference Include="BarcodeLib" Version="3.0.3" />
 	</ItemGroup>
 </Project>
