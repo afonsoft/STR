@@ -1,0 +1,106 @@
+<div [@routerTransition]>
+    <div *ngIf="enabled">
+        <div class="row">
+            <div class="col-xl-3 col-3 col-xs-3">
+                <label><strong>{{ name | localize }} :</strong></label>
+            </div>
+            <div class="col-xl-3 col-3 col-xs-3">
+                <div class="input-group">
+                  <input
+                    [(ngModel)]="address.zipCode"
+                    class="form-control m-input"
+                    [placeholder]="l('ZipCode')"
+                    type="text"
+                    [textMask]="{mask: mask}"
+                    (change)="onChangeCep($event)"
+                  />
+                </div>
+            </div>
+            <div class="col-xl-3 col-3 col-xs-3">
+                <div class="input-group">
+                  <input
+                    [placeholder]="l('PersonName')"
+                    [(ngModel)]="address.personName"
+                    class="form-control m-input"
+                    type="text"
+                    (change)="onChange($event)"
+                  />
+                </div>
+            </div>
+            <div class="col-xl-3 col-3 col-xs-3">
+                <div class="input-group">
+                  <input
+                    [placeholder]="l('Observation')"
+                    [(ngModel)]="address.observation"
+                    class="form-control m-input"
+                    type="text"
+                    (change)="onChange($event)"
+                  />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-7 col-7 col-xs-7">
+                <div class="input-group">
+                  <input
+                    [placeholder]="l('Street')"
+                    [(ngModel)]="address.street"
+                    class="form-control m-input"
+                    type="text"
+                    (change)="onChange($event)"
+                  />
+                </div>
+            </div>
+            <div class="col-xl-5 col-5 col-xs-5">
+                <div class="input-group">
+                  <input
+                    [placeholder]="l('Neighborhood')"
+                    [(ngModel)]="address.neighborhood"
+                    class="form-control m-input"
+                    type="text"
+                    (change)="onChange($event)"
+                  />
+                </div>
+            </div>           
+        </div>
+        <div class="row">
+            <div class="col-xl-5 col-5 col-xs-5">
+                <div class="input-group">
+                  <input
+                    [placeholder]="l('City')"
+                    [(ngModel)]="address.city"
+                    class="form-control m-input"
+                    type="text"
+                    (change)="onChange($event)"
+                  />
+                </div>
+            </div>
+            <div class="col-xl-2 col-2 col-xs-2">
+                <div class="input-group">
+                  <input
+                    [placeholder]="l('State')"
+                    [(ngModel)]="address.state"
+                    class="form-control m-input"
+                    type="text"
+                    (change)="onChange($event)"
+                  />
+                </div>
+            </div>
+            <div class="col-xl-5 col-5 col-xs-5">
+                <div class="input-group">
+                  <input
+                    [placeholder]="l('Complement')"
+                    [(ngModel)]="address.complement"
+                    class="form-control m-input"
+                    type="text"
+                    (change)="onChange($event)"
+                  />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!enabled">
+        <label><strong>{{ name | localize }} :</strong>&nbsp;{{ address.personName }}</label>
+    </div>
+</div>
+

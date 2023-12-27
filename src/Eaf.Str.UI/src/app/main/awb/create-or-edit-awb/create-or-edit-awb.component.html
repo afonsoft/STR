@@ -1,7 +1,6 @@
 <div
   bsModal
   #createOrEditModal="bs-modal"
-  (onShown)="onShown()"
   class="modal fade"
   tabindex="-1"
   role="dialog"
@@ -25,19 +24,36 @@
 
           <div class="row align-items-center ">
             <div class="col-6 borderAwb borderAwbHeader">
-              logo
+              Logo
             </div>
             <div class="col-6 align-items-center align-text-center borderAwb borderAwbHeader">
-              BarCode
+              
+              <div class="row align-items-center">
+                <div class="col-12">
+                  BarCode
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-6">
+
+                </div>
+                <div class="col-6">
+                  
+                </div>
+              </div>
+              <div class="row align-items-center">
+              
+              </div>
+            
             </div>
           </div>
 
           <div class="row align-items-center ">
             <div class="col-6 borderAwb senderAwb">
-              Destino
+              <app-address #addressRecipient [enabled]="isCreate" [name]="'DESTINATÁRIO'" [address]="awbCreate?.recipient" (updateAddress)="onChangeRecipient($event)"></app-address>        
             </div>
             <div class="col-6 borderAwb senderAwb">
-              Rementende
+              <app-address #addressSender [enabled]="isCreate" [name]="'REMETENTE'"  [address]="awbCreate?.sender" (updateAddress)="onChangeSender($event)"></app-address>
             </div>
           </div>
 
