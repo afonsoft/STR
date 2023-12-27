@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -126,8 +127,11 @@ namespace Eaf.Str.Awbs
         }
 
         [EafAllowAnonymous]
-        public string GetBarCode([MaxLength(13)][MinLength(8)] string barCode)
+        public string GetBarCode([MaxLength(13)][MinLength(8)][NotNull] string barCode)
         {
+            if (barCode.IsNullOrWhiteSpace() || barCode.IsNullOrEmpty())
+                throw new EafException("barCode is null or empty");
+
             var code = new Barcode(barCode)
             {
                 IncludeLabel = true,
