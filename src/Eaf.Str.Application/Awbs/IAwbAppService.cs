@@ -19,6 +19,6 @@ namespace Eaf.Str.Awbs
 
         Task Delete(int id);
 
-        byte[] GetBarCode(string barCode);
+        string GetBarCode(string barCode);
     }
 }

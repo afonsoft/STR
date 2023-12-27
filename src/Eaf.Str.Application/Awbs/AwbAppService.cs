@@ -126,7 +126,7 @@ namespace Eaf.Str.Awbs
         }
 
         [EafAllowAnonymous]
-        public byte[] GetBarCode([MaxLength(13)][MinLength(8)] string barCode)
+        public string GetBarCode([MaxLength(13)][MinLength(8)] string barCode)
         {
             var code = new Barcode(barCode)
             {
@@ -134,7 +134,7 @@ namespace Eaf.Str.Awbs
                 EncodedType = BarcodeStandard.Type.UpcA
             };
 
-            return code.EncodedImageBytes;
+            return Convert.ToBase64String(code.EncodedImageBytes);
         }
     }
 }
