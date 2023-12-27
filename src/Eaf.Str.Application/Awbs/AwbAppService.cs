@@ -9,7 +9,7 @@ using Eaf.Str.AWBs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -65,6 +65,7 @@ namespace Eaf.Str.Awbs
             await _awbManager.DeleteAwbAsync(id);
         }
 
+        [EafAllowAnonymous]
         public async Task<AwbDto> GetByTrackingNumber(string trackingNumber)
         {
             if (trackingNumber.IsNullOrEmpty())
@@ -77,6 +78,7 @@ namespace Eaf.Str.Awbs
             return ObjectMapper.Map<AwbDto>(awb);
         }
 
+        [EafAllowAnonymous]
         public async Task<AwbDto> GetByCode(string code)
         {
             if (code.IsNullOrEmpty())
@@ -123,12 +125,13 @@ namespace Eaf.Str.Awbs
             return _awbExcelExporter.ExportToFile(ObjectMapper.Map<List<AwbDto>>(items));
         }
 
-        public byte[] GetBarCode(string barCode)
+        [EafAllowAnonymous]
+        public byte[] GetBarCode([MaxLength(13)][MinLength(8)] string barCode)
         {
             var code = new Barcode(barCode)
             {
                 IncludeLabel = true,
-                EncodedType = BarcodeStandard.Type.Code11
+                EncodedType = BarcodeStandard.Type.UpcA
             };
 
             return code.EncodedImageBytes;
