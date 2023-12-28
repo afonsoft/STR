@@ -10,7 +10,7 @@
 >
   <div class="modal-dialog modal-lg modal-larger">
     <div class="modal-content">
-      <form *ngIf="active" #AwbForm="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
+      <form *ngIf="active" [formGroup]="AwbForm" novalidate (ngSubmit)="save()" autocomplete="off">
         <div class="modal-header">
           <h4 class="modal-title">
             <span *ngIf="awbCreate.id">{{ l('EditASwb') }}</span>
@@ -50,10 +50,10 @@
 
           <div class="row align-items-center ">
             <div class="col-6 borderAwb senderAwb">
-              <app-address #addressRecipient [enabled]="isCreate" [name]="'DESTINATÁRIO'" [address]="awbCreate?.recipient" (updateAddress)="onChangeRecipient($event)"></app-address>        
+              <app-address #addressRecipient [enabled]="isCreate" [name]="'DESTINATÁRIO'"  [formAddressGroup]="formAddressRecipientGroup"></app-address>        
             </div>
             <div class="col-6 borderAwb senderAwb">
-              <app-address #addressSender [enabled]="isCreate" [name]="'REMETENTE'"  [address]="awbCreate?.sender" (updateAddress)="onChangeSender($event)"></app-address>
+              <app-address #addressSender [enabled]="isCreate" [name]="'REMETENTE'"   [formAddressGroup]="formAddressSenderGroup"></app-address>
             </div>
           </div>
 
@@ -147,7 +147,7 @@
           <button
             type="submit"
             class="btn btn-primary blue"
-            [disabled]="!AwbForm.form.valid"
+            [disabled]="checkIsValidForm()"
             [buttonBusy]="saving"
             [busyText]="l('SavingWithThreeDot')"
           >

@@ -1,5 +1,6 @@
-<div [@routerTransition]>
+<div [@routerTransition] >
     <div *ngIf="enabled">
+      <form [formGroup]="formAddressGroup" autocomplete="off"  novalidate>
         <div class="row">
             <div class="col-xl-3 col-3 col-xs-3">
                 <label><strong>{{ name | localize }} :</strong></label>
@@ -7,9 +8,10 @@
             <div class="col-xl-3 col-3 col-xs-3">
                 <div class="input-group">
                   <input
-                    [(ngModel)]="address.zipCode"
                     class="form-control m-input"
+                    formControlName="zipCode"
                     [placeholder]="l('ZipCode')"
+                    required
                     type="text"
                     [textMask]="{mask: mask}"
                     (change)="onChangeCep($event)"
@@ -20,10 +22,11 @@
                 <div class="input-group">
                   <input
                     [placeholder]="l('PersonName')"
-                    [(ngModel)]="address.personName"
+                    formControlName="personName"
                     class="form-control m-input"
+                    maxlength="128"
                     type="text"
-                    (change)="onChange($event)"
+                    
                   />
                 </div>
             </div>
@@ -31,10 +34,11 @@
                 <div class="input-group">
                   <input
                     [placeholder]="l('Observation')"
-                    [(ngModel)]="address.observation"
+                    formControlName="observation"
+                    maxlength="128"
                     class="form-control m-input"
                     type="text"
-                    (change)="onChange($event)"
+                    
                   />
                 </div>
             </div>
@@ -44,10 +48,13 @@
                 <div class="input-group">
                   <input
                     [placeholder]="l('Street')"
-                    [(ngModel)]="address.street"
+                    maxlength="256"
+                    minlength="5"
+                    required
+                    formControlName="street"
                     class="form-control m-input"
                     type="text"
-                    (change)="onChange($event)"
+                    
                   />
                 </div>
             </div>
@@ -55,10 +62,13 @@
                 <div class="input-group">
                   <input
                     [placeholder]="l('Neighborhood')"
-                    [(ngModel)]="address.neighborhood"
+                    maxlength="128"
+                    minlength="5"
+                    required
+                    formControlName="neighborhood"
                     class="form-control m-input"
                     type="text"
-                    (change)="onChange($event)"
+                    
                   />
                 </div>
             </div>           
@@ -68,10 +78,13 @@
                 <div class="input-group">
                   <input
                     [placeholder]="l('City')"
-                    [(ngModel)]="address.city"
+                    maxlength="128"
+                    minlength="5"
+                    required
+                    formControlName="city"
                     class="form-control m-input"
                     type="text"
-                    (change)="onChange($event)"
+                    
                   />
                 </div>
             </div>
@@ -79,10 +92,13 @@
                 <div class="input-group">
                   <input
                     [placeholder]="l('State')"
-                    [(ngModel)]="address.state"
+                    maxlength="4"
+                    minlength="5"
+                    required
+                    formControlName="state"
                     class="form-control m-input"
                     type="text"
-                    (change)="onChange($event)"
+                    
                   />
                 </div>
             </div>
@@ -90,14 +106,16 @@
                 <div class="input-group">
                   <input
                     [placeholder]="l('Complement')"
-                    [(ngModel)]="address.complement"
+                    maxlength="128"
+                    formControlName="complement"
                     class="form-control m-input"
                     type="text"
-                    (change)="onChange($event)"
+                    
                   />
                 </div>
             </div>
         </div>
+      </form>
     </div>
     <div *ngIf="!enabled">
         <label><strong>{{ name | localize }} :</strong>&nbsp;{{ address.personName }}</label>

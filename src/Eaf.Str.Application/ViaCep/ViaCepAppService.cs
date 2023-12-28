@@ -14,6 +14,7 @@ namespace Eaf.Str.ViaCep
     public class ViaCepAppService : IViaCepAppService
     {
         private const string ZipCodeSizeErrorMessage = "Invalid ZipCode Size";
+        private const string ZipCodeNullErrorMessage = "ZipCode is null or enpty";
         private const string ZipCodeFormatErrorMessage = "Invalid ZipCode Format";
 
         private readonly HttpClient _httpClient;
@@ -61,6 +62,9 @@ namespace Eaf.Str.ViaCep
 
         private string ValidateZipCode(string zipCode)
         {
+            if (zipCode.IsNullOrEmpty() || zipCode.IsNullOrWhiteSpace())
+                throw new EafException(ZipCodeNullErrorMessage);
+
             var zipAux = zipCode.Trim().Replace("-", "");
 
             if (zipAux.Length != 8)

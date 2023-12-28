@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Injector, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
-import { AwbAddressDto, ViaCepServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ViaCepServiceProxy } from '@shared/service-proxies/service-proxies';
 
 @Component({
   selector: 'app-address',
@@ -9,42 +10,39 @@ import { AwbAddressDto, ViaCepServiceProxy } from '@shared/service-proxies/servi
   encapsulation: ViewEncapsulation.None,
   animations: [appModuleAnimation()],
 })
-export class AddressComponent extends AppComponentBase {
+export class AddressComponent extends AppComponentBase implements OnInit {
   @Input() enabled = false;
   @Input() name: string = '';
-  @Input() public address: AwbAddressDto = <AwbAddressDto>{};
-  @Output() updateAddress: EventEmitter<AwbAddressDto> = new EventEmitter<AwbAddressDto>();
+  @Input() public formAddressGroup: FormGroup;
 
   mask: Array<string | RegExp>;
 
   constructor(
     injector: Injector,
     private _cepService: ViaCepServiceProxy,
+    private fb: FormBuilder,
   ) {
     super(injector);
+  }
+
+  ngOnInit() {
     this.mask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
   }
 
   private findCep(cep: string): void {
-    this.address = new AwbAddressDto();
     this.dataTableHelper.showLoadingIndicator();
     this._cepService.getAddress(cep).subscribe(result => {
-      this.address.neighborhood = result.bairro;
-      this.address.state = result.uf;
-      this.address.zipCode = result.cep;
-      this.address.street = result.logradouro;
-      this.address.complement = result.complemento;
-      this.address.city = result.localidade;
-      this.onChange();
+      this.formAddressGroup.controls.neighborhood.setValue(result.bairro);
+      this.formAddressGroup.controls.state.setValue(result.uf);
+      this.formAddressGroup.controls.zipCode.setValue(result.cep);
+      this.formAddressGroup.controls.street.setValue(result.logradouro);
+      this.formAddressGroup.controls.complement.setValue(result.complemento);
+      this.formAddressGroup.controls.city.setValue(result.localidade);
       this.dataTableHelper.hideLoadingIndicator();
     });
   }
 
   onChangeCep(event?: any) {
     this.findCep(event.target.value);
-  }
-
-  onChange(event?: any) {
-    this.updateAddress.emit(this.address);
   }
 }

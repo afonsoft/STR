@@ -10,6 +10,8 @@ namespace Eaf.Str.Awbs.Dtos
     [AutoMap(typeof(Awb))]
     public class CreateOrEditAwbDto : EntityDto<int?>
     {
+        public string BarCode { get; set; }
+
         /// <summary>
         ///  Numero do Rastreio
         /// </summary>
