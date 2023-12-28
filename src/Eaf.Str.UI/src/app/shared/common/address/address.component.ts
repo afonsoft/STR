@@ -1,8 +1,8 @@
-import { Component, Injector, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Injector, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
-import { ViaCepServiceProxy } from '@shared/service-proxies/service-proxies';
+import { AwbAddressDto, ViaCepServiceProxy } from '@shared/service-proxies/service-proxies';
 
 @Component({
   selector: 'app-address',
@@ -14,13 +14,13 @@ export class AddressComponent extends AppComponentBase implements OnInit {
   @Input() enabled = false;
   @Input() name: string = '';
   @Input() public formAddressGroup: FormGroup;
+  @Output() updateAddress: EventEmitter<AwbAddressDto> = new EventEmitter<AwbAddressDto>();
 
   mask: Array<string | RegExp>;
 
   constructor(
     injector: Injector,
     private _cepService: ViaCepServiceProxy,
-    private fb: FormBuilder,
   ) {
     super(injector);
   }
@@ -44,5 +44,20 @@ export class AddressComponent extends AppComponentBase implements OnInit {
 
   onChangeCep(event?: any) {
     this.findCep(event.target.value);
+  }
+
+  onChange(event?: any) {
+    const address = new AwbAddressDto();
+    address.neighborhood = this.formAddressGroup.controls.neighborhood.value;
+    address.zipCode = this.formAddressGroup.controls.zipCode.value;
+    address.state = this.formAddressGroup.controls.state.value;
+    address.street = this.formAddressGroup.controls.street.value;
+    address.complement = this.formAddressGroup.controls.complement.value;
+    address.city = this.formAddressGroup.controls.city.value;
+
+    address.observation = this.formAddressGroup.controls.observation.value;
+    address.personName = this.formAddressGroup.controls.personName.value;
+
+    this.updateAddress.emit(address);
   }
 }

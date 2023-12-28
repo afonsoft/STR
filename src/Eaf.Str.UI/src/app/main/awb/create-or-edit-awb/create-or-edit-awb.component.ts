@@ -130,11 +130,9 @@ export class CreateOrEditAwbComponent extends AppComponentBase implements OnInit
   getAwbItens(event?: LazyLoadEvent): void {}
 
   onChangeSender(address: AwbAddressDto) {
-    console.log(address);
     this.awbCreate.sender = address;
   }
   onChangeRecipient(address: AwbAddressDto) {
-    console.log(address);
     this.awbCreate.recipient = address;
   }
 }
