@@ -135,7 +135,7 @@ namespace Eaf.Str.Awbs
             var code = new Barcode(barCode)
             {
                 IncludeLabel = true,
-                EncodedType = BarcodeStandard.Type.UpcA
+                EncodedType = BarcodeStandard.Type.Code128B
             };
 
             return Convert.ToBase64String(code.EncodedImageBytes);
