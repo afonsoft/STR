@@ -60,5 +60,15 @@ namespace Eaf.Str.Awbs.Dtos
         public string ReceivedDocument { get; set; }
 
         public virtual IList<AwbItemDto> Itens { get; set; }
+
+        /// <summary>
+        /// Last modification date of this entity.
+        /// </summary>
+        public DateTime? LastModificationTime { get; set; }
+
+        /// <summary>
+        /// Creation date of this entity.
+        /// </summary>
+        public DateTime CreationTime { get; set; }
     }
 }
