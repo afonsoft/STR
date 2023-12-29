@@ -11745,6 +11745,7 @@ export interface ICreateOrEditAirplaneDto {
 }
 
 export class CreateOrEditAwbDto implements ICreateOrEditAwbDto {
+    barCode!: string | undefined;
     trackingNumber!: string | undefined;
     recipient!: AwbAddressDto;
     sender!: AwbAddressDto;
@@ -11754,6 +11755,8 @@ export class CreateOrEditAwbDto implements ICreateOrEditAwbDto {
     receivedDate!: moment.Moment | undefined;
     receivedDocument!: string | undefined;
     itens!: AwbItemDto[] | undefined;
+    lastModificationTime!: moment.Moment | undefined;
+    creationTime!: moment.Moment;
     id!: number | undefined;
 
     constructor(data?: ICreateOrEditAwbDto) {
@@ -11771,6 +11774,7 @@ export class CreateOrEditAwbDto implements ICreateOrEditAwbDto {
 
     init(_data?: any) {
         if (_data) {
+            this.barCode = _data["barCode"];
             this.trackingNumber = _data["trackingNumber"];
             this.recipient = _data["recipient"] ? AwbAddressDto.fromJS(_data["recipient"]) : new AwbAddressDto();
             this.sender = _data["sender"] ? AwbAddressDto.fromJS(_data["sender"]) : new AwbAddressDto();
@@ -11784,6 +11788,8 @@ export class CreateOrEditAwbDto implements ICreateOrEditAwbDto {
                 for (let item of _data["itens"])
                     this.itens!.push(AwbItemDto.fromJS(item));
             }
+            this.lastModificationTime = _data["lastModificationTime"] ? moment(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
             this.id = _data["id"];
         }
     }
@@ -11797,6 +11803,7 @@ export class CreateOrEditAwbDto implements ICreateOrEditAwbDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["barCode"] = this.barCode;
         data["trackingNumber"] = this.trackingNumber;
         data["recipient"] = this.recipient ? this.recipient.toJSON() : <any>undefined;
         data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
@@ -11810,12 +11817,15 @@ export class CreateOrEditAwbDto implements ICreateOrEditAwbDto {
             for (let item of this.itens)
                 data["itens"].push(item.toJSON());
         }
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["id"] = this.id;
         return data;
     }
 }
 
 export interface ICreateOrEditAwbDto {
+    barCode: string | undefined;
     trackingNumber: string | undefined;
     recipient: AwbAddressDto;
     sender: AwbAddressDto;
@@ -11825,6 +11835,8 @@ export interface ICreateOrEditAwbDto {
     receivedDate: moment.Moment | undefined;
     receivedDocument: string | undefined;
     itens: AwbItemDto[] | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    creationTime: moment.Moment;
     id: number | undefined;
 }
 

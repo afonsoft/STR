@@ -111,7 +111,12 @@ namespace Eaf.Str.Awbs
         public async Task<CreateOrEditAwbDto> GetForEdit(int id)
         {
             var awb = await _awbManager.Awbs.FirstOrDefaultAsync(x => x.Id == id);
-            return ObjectMapper.Map<CreateOrEditAwbDto>(awb);
+            var dto = ObjectMapper.Map<CreateOrEditAwbDto>(awb);
+
+            if (!string.IsNullOrEmpty(dto.TrackingNumber))
+                dto.BarCode = GetBarCode(dto.TrackingNumber);
+
+            return dto;
         }
 
         public async Task<FileDto> getAwbToExcel(string filter)
@@ -129,16 +134,24 @@ namespace Eaf.Str.Awbs
         [EafAllowAnonymous]
         public string GetBarCode([MaxLength(13)][MinLength(8)][NotNull] string barCode)
         {
-            if (barCode.IsNullOrWhiteSpace() || barCode.IsNullOrEmpty())
-                throw new EafException("barCode is null or empty");
-
-            var code = new Barcode(barCode)
+            try
             {
-                IncludeLabel = true,
-                EncodedType = BarcodeStandard.Type.Code128B
-            };
+                if (barCode.IsNullOrWhiteSpace() || barCode.IsNullOrEmpty())
+                    throw new EafException("barCode is null or empty");
 
-            return Convert.ToBase64String(code.EncodedImageBytes);
+                var code = new Barcode(barCode)
+                {
+                    IncludeLabel = true,
+                    EncodedType = BarcodeStandard.Type.Code128B
+                };
+
+                return Convert.ToBase64String(code.EncodedImageBytes);
+            }
+            catch (Exception ex)
+            {
+                Logger.WarnFormat(ex, "GetBarCode: {0}", ex.Message);
+                return ex.Message;
+            }
         }
     }
 }

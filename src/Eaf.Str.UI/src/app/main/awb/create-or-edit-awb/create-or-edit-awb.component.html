@@ -48,10 +48,10 @@
           </div>
           <div class="row align-items-center ">
             <div class="col-6 borderAwb senderAwb">
-              <app-address #addressRecipient [enabled]="isCreate" [name]="'DESTINATÁRIO'"  [formAddressGroup]="formAddressRecipientGroup" (updateAddress)="onChangeRecipient($event)"></app-address>        
+              <app-address #addressRecipient [enabled]="isCreate" [name]="'DESTINATÁRIO'" [formAddressGroup]="formAddressRecipientGroup" (updateAddress)="onChangeRecipient($event)"></app-address>        
             </div>
             <div class="col-6 borderAwb senderAwb">
-              <app-address #addressSender [enabled]="isCreate" [name]="'REMETENTE'"   [formAddressGroup]="formAddressSenderGroup" (updateAddress)="onChangeSender($event)"></app-address>
+              <app-address #addressSender [enabled]="isCreate" [name]="'REMETENTE'" [formAddressGroup]="formAddressSenderGroup" (updateAddress)="onChangeSender($event)"></app-address>
             </div>
           </div>
 
