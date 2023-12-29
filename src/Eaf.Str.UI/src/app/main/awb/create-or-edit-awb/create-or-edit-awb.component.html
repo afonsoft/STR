@@ -35,14 +35,42 @@
               </div>
               <div class="row align-items-center">
                 <div class="col-6">
-
+                  <div class="form-group">
+                    <label for="origin">{{ 'Origin' | localize }}</label>
+                    <input *ngIf="isCreate"
+                      id="origin"
+                      #originInput="ngModel"
+                      class="form-control"
+                      type="text"
+                      name="origin"
+                      [(ngModel)]="awbCreate.origin"
+                      required
+                      maxlength="4"
+                      pattern="^[a-zA-Z][a-zA-Z0-9_-]{2,4}$"
+                    />
+                    <label *ngIf="!isCreate">{{ awbCreate.origin }}</label>
+                  </div>
                 </div>
                 <div class="col-6">
-                  
+                  <div class="form-group">
+                    <label for="destiny">{{ 'Destiny' | localize }}</label>
+                    <input *ngIf="isCreate"
+                      id="destiny"
+                      #destinyInput="ngModel"
+                      class="form-control"
+                      type="text"
+                      name="destiny"
+                      [(ngModel)]="awbCreate.destiny"
+                      required
+                      maxlength="4"
+                      pattern="^[a-zA-Z][a-zA-Z0-9_-]{2,4}$"
+                    />
+                    <label *ngIf="!isCreate">{{ awbCreate.destiny }}</label>
+                  </div>
                 </div>
               </div>
               <div class="row align-items-center">
-              
+                {{ 'Date' | localize }}: {{ awbCreate.creationTime | momentFormat: 'DD-MM-YYYY HH:mm' }}
               </div>
             </div>
           </div>
@@ -145,7 +173,7 @@
           <button
             type="submit"
             class="btn btn-primary blue"
-            [disabled]="checkIsValidForm()"
+            [disabled]="!checkIsValidForm()"
             [buttonBusy]="saving"
             [busyText]="l('SavingWithThreeDot')"
           >
