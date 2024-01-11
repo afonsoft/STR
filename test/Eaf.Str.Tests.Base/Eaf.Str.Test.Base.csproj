@@ -20,15 +20,15 @@
 		<ProjectReference Include="..\..\src\Eaf.Str.EntityFrameworkCore\Eaf.Str.EntityFrameworkCore.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Eaf.Middleware.Web.Core" Version="6.1.7" />
-		<PackageReference Include="Eaf.TestBase" Version="6.1.7" />
+		<PackageReference Include="Eaf.Middleware.Web.Core" Version="6.1.8" />
+		<PackageReference Include="Eaf.TestBase" Version="6.1.8" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
-		<PackageReference Include="xunit" Version="2.6.3" />
-		<PackageReference Include="xunit.extensibility.execution" Version="2.6.3" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.5.5">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
+		<PackageReference Include="xunit" Version="2.6.5" />
+		<PackageReference Include="xunit.extensibility.execution" Version="2.6.5" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
@@ -48,10 +48,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
-		<PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+		<PackageReference Include="System.Drawing.Common" Version="8.0.1" />
 		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="8.0.0" />
-		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
-		<PackageReference Include=" Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.0" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
+		<PackageReference Include=" Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.1" />
 	</ItemGroup>
 </Project>
