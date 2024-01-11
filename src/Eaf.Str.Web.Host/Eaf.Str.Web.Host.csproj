@@ -58,6 +58,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="wwwroot\swagger\ui\index.html" />
