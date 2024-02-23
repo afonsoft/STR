@@ -10,7 +10,7 @@
 		<Authors>AFONSOFT</Authors>
 		<Company>EAF</Company>
 		<Copyright>Copyright © 2024</Copyright>
-		<LangVersion>9.0</LangVersion>
+		<LangVersion>10.0</LangVersion>
 		<PreserveCompilationContext>true</PreserveCompilationContext>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
@@ -18,5 +18,11 @@
 		<SelfContained>false</SelfContained>
 		<NoWarn>$(NoWarn);CS1591;SYSLIB0001;SYSLIB0002;SYSLIB0003;MSB3277</NoWarn>
 		<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3253;MSB3277</MSBuildWarningsAsMessages>
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
+		<ServerGarbageCollection>true</ServerGarbageCollection>
+		<GarbageCollectionAdaptationMode>1</GarbageCollectionAdaptationMode>
+		<UseWindowsThreadPool>true</UseWindowsThreadPool>
+		<PublishAot>false</PublishAot>
+		<SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
 	</PropertyGroup>
 </Project>
