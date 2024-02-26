@@ -54,6 +54,9 @@ namespace Eaf.Str.Web.Startup
 
             services.AddEafConfigurer(_appConfiguration);
 
+            //Add Polly Retry
+            services.EafHttpClientWithPolly();
+
             //Configure OpenTelemetry
             services.AddEafOpenTelemetry(options =>
             {
@@ -162,6 +165,7 @@ namespace Eaf.Str.Web.Startup
                 endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
+                endpoints.MapEafOpenTelemetryMetrics();
                 app.ApplicationServices.GetRequiredService<IEafAspNetCoreConfiguration>().EndpointConfiguration.ConfigureAllEndpoints(endpoints);
             });
 
@@ -181,7 +185,6 @@ namespace Eaf.Str.Web.Startup
                     options.InjectBaseUrl(_appConfiguration["App:ServerRootAddress"]);
                 });
             }
-
             //All Recurring Jobs
             app.ScheduleRecurringJobs();
         }
