@@ -6,6 +6,7 @@ using System.Threading;
 using System;
 using System.Globalization;
 using Serilog;
+using Serilog.Events;
 
 namespace Eaf.Str.Web.Startup
 {
@@ -31,7 +32,7 @@ namespace Eaf.Str.Web.Startup
         {
             return new WebHostBuilder()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseEafSerilog()
+                .UseEafSerilog(LogEventLevel.Error)
                 .UseEafConfiguration(prefix: "Str_")
                 .UseKestrel(opt =>
                 {
