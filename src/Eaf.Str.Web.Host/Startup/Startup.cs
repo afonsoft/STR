@@ -166,7 +166,7 @@ namespace Eaf.Str.Web.Startup
             });
 
             // Enable middleware HangFire
-            app.UseEafHangfire();
+            app.UseEafHangfire(opt => opt.IsEnabled = false);
 
             //For Security Only Swagger on Develop/Staging
             if (!_hostingEnvironment.IsProduction())

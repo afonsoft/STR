@@ -7,7 +7,7 @@ namespace Eaf.Str.Web.Middleware
     {
         private readonly RequestDelegate _next;
 
-        private const string ContentSecurityPolicy = "default-src * 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.hotjar.com https://*.hotjar.io wss://*.hotjar.com https://*.dynatrace.com 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;";
+        private const string ContentSecurityPolicy = "default-src * 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.hotjar.com https://*.hotjar.io wss://*.hotjar.com https://*.dynatrace.com https://*.afonsoft.com.br wss://*.afonsoft.com.br 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data: https:;";
 
         public ContentSecurityPolicyMiddleware(RequestDelegate next)
         {

@@ -10,8 +10,8 @@ namespace Eaf.Str.Application.Extensions
     {
         public static void ScheduleRecurringJobs(this IApplicationBuilder app)
         {
-            RecurringJob.AddOrUpdate<IAirplaneManager>("DateUpdateProcess", x => x.DateUpdate(null), Cron.Yearly, TimeZoneInfo.Local);
-            RecurringJob.AddOrUpdate<IAirportsJob>("AirportsJob", x => x.ExecuteAsync(true, null, default), Cron.Yearly, TimeZoneInfo.Local);
+            //RecurringJob.AddOrUpdate<IAirplaneManager>("DateUpdateProcess", x => x.DateUpdate(null), Cron.Yearly, TimeZoneInfo.Local);
+            //RecurringJob.AddOrUpdate<IAirportsJob>("AirportsJob", x => x.ExecuteAsync(true, null, default), Cron.Yearly, TimeZoneInfo.Local);
         }
     }
 }
