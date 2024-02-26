@@ -66,6 +66,10 @@ namespace Eaf.Str.Web.Startup
         {
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+
+            Logger.InfoFormat("HealthChecksEnpoint {0}", "/health");
+            Logger.InfoFormat("PrometheusEndpoint {0}", "/metrics");
+            Logger.InfoFormat("SwaggerUI {0}", "/swagger");
         }
     }
 }
