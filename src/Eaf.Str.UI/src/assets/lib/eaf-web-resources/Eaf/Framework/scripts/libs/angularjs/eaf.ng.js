@@ -1,4 +1,4 @@
-(function (eaf, angular) {
+﻿(function (eaf, angular) {
 
     if (!angular) {
         return;

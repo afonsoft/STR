@@ -1,4 +1,4 @@
-// taken from https://raw.githubusercontent.com/alexradulescu/FreezeUI
+﻿// taken from https://raw.githubusercontent.com/alexradulescu/FreezeUI
 // and modified
 (function() {
 

@@ -1,25 +1,21 @@
-declare namespace eaf {
+﻿declare namespace eaf {
+  namespace signalr {
+    let autoConnect: boolean;
 
-    namespace signalr {
+    let qs: string;
 
-        let autoConnect: boolean;
+    let remoteServiceBaseUrl: string;
 
-        let qs: string;
+    let url: string;
 
-        let remoteServiceBaseUrl: string;
+    let withUrlOptions: object;
 
-        let url: string;
+    function connect(): any;
 
-        function connect(): any;
+    function startConnection(url: string, configureConnection: Function): Promise<any>;
 
-        function startConnection(url: string, configureConnection: Function): Promise<any>;
-
-        namespace hubs {
-
-            let common: any;
-
-        }
-
+    namespace hubs {
+      let common: any;
     }
-
+  }
 }

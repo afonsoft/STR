@@ -1,4 +1,4 @@
-import { AppConsts } from '@shared/AppConsts';
+﻿import { AppConsts } from '@shared/AppConsts';
 import * as rtlDetect from 'rtl-detect';
 import { StyleLoaderService } from '@shared/utils/style-loader.service';
 import { ThemeHelper } from '@app/shared/layout/themes/ThemeHelper';

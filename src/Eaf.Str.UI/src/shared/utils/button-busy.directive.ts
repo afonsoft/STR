@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit, AfterViewInit } from '@angular/core';
+﻿import { Directive, ElementRef, Input, OnInit, AfterViewInit } from '@angular/core';
 import { AppLocalizationService } from '@app/shared/common/localization/app-localization.service';
 import * as _ from 'lodash';
 

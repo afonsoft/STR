@@ -1,4 +1,4 @@
-export class NgxBootstrapLocaleMappingService {
+﻿export class NgxBootstrapLocaleMappingService {
     map(locale: string): string | undefined {
         const cultureMap = {
             'en': 'en-gb',

@@ -1,4 +1,4 @@
-import { Attribute, Directive, forwardRef } from '@angular/core';
+﻿import { Attribute, Directive, forwardRef } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
 
 //Got from: https://scotch.io/tutorials/how-to-implement-a-custom-validator-directive-confirm-password-in-angular-2

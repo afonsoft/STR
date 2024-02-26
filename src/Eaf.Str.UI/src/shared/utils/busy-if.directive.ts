@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, SimpleChanges, OnChanges } from '@angular/core';
+﻿import { Directive, ElementRef, Input, SimpleChanges, OnChanges } from '@angular/core';
 
 @Directive({
     selector: '[busyIf]'

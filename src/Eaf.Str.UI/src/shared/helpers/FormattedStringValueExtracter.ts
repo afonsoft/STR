@@ -1,4 +1,4 @@
-
+﻿
 class ExtractionResult {
 
     public IsMatch: boolean;

@@ -1,4 +1,4 @@
-import { PermissionCheckerService } from '@eaf/auth/permission-checker.service';
+﻿import { PermissionCheckerService } from '@eaf/auth/permission-checker.service';
 import { FeatureCheckerService } from '@eaf/features/feature-checker.service';
 import { LocalizationService } from '@eaf/localization/localization.service';
 import { MessageService } from '@eaf/message/message.service';

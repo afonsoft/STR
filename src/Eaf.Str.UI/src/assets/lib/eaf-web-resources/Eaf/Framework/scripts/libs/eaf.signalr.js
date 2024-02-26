@@ -1,4 +1,4 @@
-var eaf = eaf || {};
+﻿var eaf = eaf || {};
 (function ($) {
 
     //Check if SignalR is defined

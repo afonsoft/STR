@@ -1,4 +1,4 @@
-export class XmlHttpRequestHelper {
+﻿export class XmlHttpRequestHelper {
 
     static ajax(type: string, url: string, customHeaders: any, data: any, success: any) {
 

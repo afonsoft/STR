@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuAsideDirective } from './directives/menu-aside.directive';
 import { MenuAsideOffcanvasDirective } from './directives/menu-aside-offcanvas.directive';

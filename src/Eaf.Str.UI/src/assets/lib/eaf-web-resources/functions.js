@@ -1,4 +1,4 @@
-$(document).ready(function(){
+﻿$(document).ready(function(){
 	//Menu Dropbox
 	$("ul.dropdown-menu [data-toggle='dropdown']").on("click", function(event) {
 		event.preventDefault();

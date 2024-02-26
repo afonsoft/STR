@@ -1,0 +1,49 @@
+﻿@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./Eaf/GOLSansDisplay-Bold.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./Eaf/GOLSansDisplay-Light.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./Eaf/GOLSansDisplay-Medium.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./Eaf/GOLSansDisplay-Regular.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./Eaf/GOLSansDisplay-Thin.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansDisplay";
+    src: url(./Eaf/GOLSansDisplay-XBold.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansText";
+    src: url(./Eaf/GOLSansText-Bold.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansText";
+    src: url(./Eaf/GOLSansText-Light.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansText";
+    src: url(./Eaf/GOLSansText-Medium.ttf);
+}
+
+@font-face {
+    font-family: "GOLSansText";
+    src: url(./Eaf/GOLSansText-Regular.ttf);
+}

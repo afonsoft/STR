@@ -1,4 +1,4 @@
-declare namespace eaf {
+﻿declare namespace eaf {
 
     //TODO: Gets JQuery.AjaxOptions and returns JQuery.Promise
 

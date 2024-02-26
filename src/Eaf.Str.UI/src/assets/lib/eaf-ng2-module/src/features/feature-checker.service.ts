@@ -1,4 +1,4 @@
-///<reference path="../../../eaf-web-resources/Eaf/Framework/scripts/eaf.d.ts"/>
+﻿///<reference path="../../../eaf-web-resources/Eaf/Framework/scripts/eaf.d.ts"/>
 import { Injectable } from '@angular/core';
 
 @Injectable({

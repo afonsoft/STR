@@ -10017,6 +10017,7 @@ export class WebLogServiceProxy {
 export class AboutModel implements IAboutModel {
     version!: string | undefined;
     osVersion!: string | undefined;
+    os!: string | undefined;
     numberOfProcessors!: string | undefined;
     machineName!: string | undefined;
     architecture!: string | undefined;
@@ -10027,6 +10028,11 @@ export class AboutModel implements IAboutModel {
     currentTimeZoneLocal!: string | undefined;
     currentEnviromment!: string | undefined;
     currentDirectory!: string | undefined;
+    processName!: string | undefined;
+    pagedMemorySize!: string | undefined;
+    privateMemorySize!: string | undefined;
+    virtualMemorySize!: string | undefined;
+    workingMemoryUsed!: string | undefined;
     modules!: string[] | undefined;
 
     constructor(data?: IAboutModel) {
@@ -10042,6 +10048,7 @@ export class AboutModel implements IAboutModel {
         if (_data) {
             this.version = _data["version"];
             this.osVersion = _data["osVersion"];
+            this.os = _data["os"];
             this.numberOfProcessors = _data["numberOfProcessors"];
             this.machineName = _data["machineName"];
             this.architecture = _data["architecture"];
@@ -10052,6 +10059,11 @@ export class AboutModel implements IAboutModel {
             this.currentTimeZoneLocal = _data["currentTimeZoneLocal"];
             this.currentEnviromment = _data["currentEnviromment"];
             this.currentDirectory = _data["currentDirectory"];
+            this.processName = _data["processName"];
+            this.pagedMemorySize = _data["pagedMemorySize"];
+            this.privateMemorySize = _data["privateMemorySize"];
+            this.virtualMemorySize = _data["virtualMemorySize"];
+            this.workingMemoryUsed = _data["workingMemoryUsed"];
             if (Array.isArray(_data["modules"])) {
                 this.modules = [] as any;
                 for (let item of _data["modules"])
@@ -10071,6 +10083,7 @@ export class AboutModel implements IAboutModel {
         data = typeof data === 'object' ? data : {};
         data["version"] = this.version;
         data["osVersion"] = this.osVersion;
+        data["os"] = this.os;
         data["numberOfProcessors"] = this.numberOfProcessors;
         data["machineName"] = this.machineName;
         data["architecture"] = this.architecture;
@@ -10081,6 +10094,11 @@ export class AboutModel implements IAboutModel {
         data["currentTimeZoneLocal"] = this.currentTimeZoneLocal;
         data["currentEnviromment"] = this.currentEnviromment;
         data["currentDirectory"] = this.currentDirectory;
+        data["processName"] = this.processName;
+        data["pagedMemorySize"] = this.pagedMemorySize;
+        data["privateMemorySize"] = this.privateMemorySize;
+        data["virtualMemorySize"] = this.virtualMemorySize;
+        data["workingMemoryUsed"] = this.workingMemoryUsed;
         if (Array.isArray(this.modules)) {
             data["modules"] = [];
             for (let item of this.modules)
@@ -10093,6 +10111,7 @@ export class AboutModel implements IAboutModel {
 export interface IAboutModel {
     version: string | undefined;
     osVersion: string | undefined;
+    os: string | undefined;
     numberOfProcessors: string | undefined;
     machineName: string | undefined;
     architecture: string | undefined;
@@ -10103,6 +10122,11 @@ export interface IAboutModel {
     currentTimeZoneLocal: string | undefined;
     currentEnviromment: string | undefined;
     currentDirectory: string | undefined;
+    processName: string | undefined;
+    pagedMemorySize: string | undefined;
+    privateMemorySize: string | undefined;
+    virtualMemorySize: string | undefined;
+    workingMemoryUsed: string | undefined;
     modules: string[] | undefined;
 }
 

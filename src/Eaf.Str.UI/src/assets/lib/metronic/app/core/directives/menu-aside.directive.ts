@@ -1,4 +1,4 @@
-import { Directive, ElementRef } from '@angular/core';
+﻿import { Directive, ElementRef } from '@angular/core';
 import { LayoutConfigService } from '../services/layout-config.service';
 import * as objectPath from 'object-path';
 import { LayoutRefService } from '../services/layout-ref.service';

@@ -1,4 +1,4 @@
-export { EafModule } from './eaf.module';
+﻿export { EafModule } from './eaf.module';
 export { EafUserConfigurationService } from './eaf-user-configuration.service';
 
 export * from './auth/token.service';

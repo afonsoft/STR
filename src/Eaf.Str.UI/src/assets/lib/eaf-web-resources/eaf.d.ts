@@ -1,4 +1,4 @@
-declare namespace eaf {
+﻿declare namespace eaf {
 
     let appPath: string;
 

@@ -1,4 +1,4 @@
-this.Element &&
+﻿this.Element &&
     (function (t) {
         t.matches =
             t.matches ||

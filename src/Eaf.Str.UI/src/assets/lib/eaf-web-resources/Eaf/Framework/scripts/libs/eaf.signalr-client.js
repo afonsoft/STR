@@ -1,4 +1,4 @@
-var eaf = eaf || {};
+﻿var eaf = eaf || {};
 (function () {
 
     // Check if SignalR is defined
@@ -14,6 +14,8 @@ var eaf = eaf || {};
     eaf.signalr.increaseReconnectTime = eaf.signalr.increaseReconnectTime || function (time) {
         return time * 2;
     };
+
+    eaf.signalr.withUrlOptions = eaf.signalr.withUrlOptions || {};
 
     // Configure the connection for eaf.signalr.hubs.common
     function configureConnection(connection) {

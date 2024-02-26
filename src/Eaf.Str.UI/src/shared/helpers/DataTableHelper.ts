@@ -1,4 +1,4 @@
-import { LazyLoadEvent } from 'primeng/primeng';
+﻿import { LazyLoadEvent } from 'primeng/primeng';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 

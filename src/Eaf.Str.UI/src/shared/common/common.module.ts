@@ -1,4 +1,4 @@
-import { EafModule } from '@eaf/eaf.module';
+﻿import { EafModule } from '@eaf/eaf.module';
 import * as ngCommon from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { AppUrlService } from './nav/app-url.service';

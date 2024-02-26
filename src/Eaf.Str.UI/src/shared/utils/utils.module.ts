@@ -1,4 +1,4 @@
-import { CommonModule, CurrencyPipe } from '@angular/common';
+﻿import { CommonModule, CurrencyPipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AutoFocusDirective } from './auto-focus.directive';
 import { BusyIfDirective } from './busy-if.directive';

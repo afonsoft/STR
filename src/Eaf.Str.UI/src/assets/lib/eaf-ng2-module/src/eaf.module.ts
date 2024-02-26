@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { EafSessionService } from './session/eaf-session.service';
 import { PermissionCheckerService } from './auth/permission-checker.service';
 import { FeatureCheckerService } from './features/feature-checker.service';

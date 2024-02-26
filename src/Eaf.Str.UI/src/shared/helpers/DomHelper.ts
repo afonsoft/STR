@@ -1,4 +1,4 @@
-export class DomHelper {
+﻿export class DomHelper {
 
     static waitUntilElementIsReady(selector: string, callback: any, checkPeriod?: number): void {
         let selectors = selector.split(',');

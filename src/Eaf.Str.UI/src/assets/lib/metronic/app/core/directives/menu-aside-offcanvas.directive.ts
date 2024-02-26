@@ -1,4 +1,4 @@
-import { Directive, AfterViewInit, ElementRef } from '@angular/core';
+﻿import { Directive, AfterViewInit, ElementRef } from '@angular/core';
 
 @Directive({
     selector: '[mMenuAsideOffcanvas]'

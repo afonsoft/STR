@@ -1,9 +1,12 @@
-(function (define) {
+﻿(function (define) {
     define(['jquery'], function ($) {
       return (function () {
         var eaf = window.eaf || {};
 
         /* Application paths *****************************************/
+
+        //Version
+        eaf.version = "7.0.0";
 
         //Current application root path (including virtual directory if exists).
         eaf.appPath = eaf.appPath || '/';
@@ -23,8 +26,8 @@
 
         eaf.multiTenancy = eaf.multiTenancy || {};
 
-      eaf.multiTenancy.isEnabled = false;
-      eaf.multiTenancy.ignoreFeatureCheckForHostUsers = false;
+        eaf.multiTenancy.isEnabled = false;
+        eaf.multiTenancy.ignoreFeatureCheckForHostUsers = false;
 
         eaf.multiTenancy.sides = {
           TENANT: 1,
@@ -326,13 +329,13 @@
         eaf.notifications.getFormattedMessageFromUserNotification = function (userNotification) {
           var formatter = eaf.notifications.messageFormatters[userNotification.notification.data.type];
           if (!formatter) {
-            eaf.log.warn('No message formatter defined for given data type: ' + userNotification.notification.data.type)
+            eaf.log.warn('No message formatter defined for given data type: ' + userNotification.notification.data.type);
             return '?';
           }
 
           if (!eaf.utils.isFunction(formatter)) {
             eaf.log.warn('Message formatter should be a function! It is invalid for data type: ' +
-              userNotification.notification.data.type)
+              userNotification.notification.data.type);
             return '?';
           }
 

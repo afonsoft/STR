@@ -1,4 +1,4 @@
-import { BsDatepickerConfig, BsDaterangepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
+﻿import { BsDatepickerConfig, BsDaterangepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { NgxBootstrapLocaleMappingService } from 'assets/lib/ngx-bootstrap/ngx-bootstrap-locale-mapping.service';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ThemeHelper } from '@app/shared/layout/themes/ThemeHelper';

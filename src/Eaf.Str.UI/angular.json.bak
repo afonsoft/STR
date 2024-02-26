@@ -45,7 +45,7 @@
               "src/assets/lib/primeng/autocomplete/css/primeng.autocomplete.css",
               "src/assets/lib/primeng/tree/css/primeng.tree.css",
               "src/assets/lib/primeng/context-menu/css/primeng.context-menu.css",
-              "src/assets/common/fonts/fonts-eaf.css",
+              "src/assets/common/fonts/fonts-gol.css",
               "src/assets/lib/ngx-bootstrap/bs-datepicker.css",
               "src/assets/lib/metronic/assets/vendors/base/vendors.bundle.css",
               "src/assets/common/styles/styles.css"
@@ -60,7 +60,7 @@
               "node_modules/sweetalert2/dist/sweetalert2.js",
               "node_modules/cookieconsent/build/cookieconsent.min.js",
               "node_modules/html2canvas/dist/html2canvas.min.js",
-              "node_modules/jspdf/dist/jspdf.umd.min.js",
+              "node_modules/jspdf/dist/jspdf.min.js",
               "src/assets/lib/eaf-web-resources/jquery.js",
               "src/assets/lib/mdbootstrap/mdb.min.js",
               "src/assets/lib/freezeUI/freeze-ui.js",

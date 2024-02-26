@@ -1,4 +1,4 @@
-export class HtmlHelper {
+﻿export class HtmlHelper {
 
     static encodeText(value: string): string {
         let div = document.createElement('div');

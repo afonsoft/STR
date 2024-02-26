@@ -1,4 +1,4 @@
-/* Adapter for jTable (http://jtable.org) to ASP.NET Boilerplate (http://voegol.com.br)
+﻿/* Adapter for jTable (http://jtable.org) to ASP.NET Boilerplate (http://voegol.com.br)
  * by GOL Labs Admin (http://voegol.com.br).
  * by Afonsoft (www.afonsoft.com.br).
  */
