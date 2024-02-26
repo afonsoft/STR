@@ -39,11 +39,10 @@
                     <label for="origin">{{ 'Origin' | localize }}</label>
                     <input *ngIf="isCreate"
                       id="origin"
-                      #originInput="ngModel"
                       class="form-control"
                       type="text"
                       name="origin"
-                      [(ngModel)]="awbCreate.origin"
+                      formControlName="origin"
                       required
                       maxlength="4"
                       pattern="^[a-zA-Z][a-zA-Z0-9_-]{2,4}$"
@@ -56,11 +55,10 @@
                     <label for="destiny">{{ 'Destiny' | localize }}</label>
                     <input *ngIf="isCreate"
                       id="destiny"
-                      #destinyInput="ngModel"
                       class="form-control"
                       type="text"
                       name="destiny"
-                      [(ngModel)]="awbCreate.destiny"
+                      formControlName="destiny"
                       required
                       maxlength="4"
                       pattern="^[a-zA-Z][a-zA-Z0-9_-]{2,4}$"
