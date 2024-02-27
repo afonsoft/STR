@@ -158,8 +158,6 @@ export class LoginService {
 
     this._storageService.setCookieValue(AppConsts.expirationToken.keyName, expireInSeconds.toString(), null, eaf.appPath);
 
-    //Default TenantId
-    this._storageService.setCookieValue(eaf.multiTenancy.tenantIdCookieName, '1', null, eaf.appPath);
     if (redirectUrl) {
       setTimeout(() => {
         location.href = redirectUrl;
