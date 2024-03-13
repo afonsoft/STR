@@ -15,7 +15,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Eaf.Castle.Log4Net" Version="7.0.0" /> 
+		<PackageReference Include="Eaf.Castle.Log4Net" Version="7.0.1" /> 
 		<ProjectReference Include="..\Eaf.Str.EntityFrameworkCore\Eaf.Str.EntityFrameworkCore.csproj" />
 	</ItemGroup>
 </Project>

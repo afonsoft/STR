@@ -56,20 +56,16 @@ namespace Eaf.Str.Web.Startup
             Configuration.Auditing.LogExpireTime = TimeSpan.FromDays(360);
             Configuration.Auditing.LogExpireEnabled = true;
 
-            //Configuration.Caching.MemoryCacheOptions = new Microsoft.Extensions.Caching.Memory.MemoryCacheOptions
-            //{
-            //    SizeLimit = 256 //Mb
-            //};
+            Configuration.Caching.MemoryCacheOptions = new Microsoft.Extensions.Caching.Memory.MemoryCacheOptions
+            {
+                SizeLimit = 256 //Mb
+            };
         }
 
         public override void PostInitialize()
         {
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
-
-            Logger.InfoFormat("HealthChecksEnpoint {0}", "/health");
-            Logger.InfoFormat("PrometheusEndpoint {0}", "/metrics");
-            Logger.InfoFormat("SwaggerUI {0}", "/swagger");
         }
     }
 }
