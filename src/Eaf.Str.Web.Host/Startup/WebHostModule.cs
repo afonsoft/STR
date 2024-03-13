@@ -18,13 +18,11 @@ namespace Eaf.Str.Web.Startup
     public class WebHostModule : EafModule
     {
         private readonly IConfigurationRoot _appConfiguration;
-        private readonly IWebHostEnvironment _hostingEnvironment;
 
         public WebHostModule(
             IWebHostEnvironment env
         )
         {
-            _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
