@@ -118,6 +118,7 @@
     "@types/node": "^13.13.4",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
+    "browserify-sign": "4.2.2",
     "codelyzer": "^6.0.0",
     "colors": "^1.4.0",
     "command-line-args": "^5.2.1",
@@ -126,9 +127,9 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "fs": "^0.0.1-security",
-    "husky": "^8.0.0",
-    "lint-staged": "^14.0.1",
+    "husky": "^8.0.3",
     "jshint": "^2.13.6",
+    "lint-staged": "^14.0.1",
     "nswag": "^13.4.2",
     "prettier": "3.0.3",
     "prettier-eslint": "^15.0.1",
@@ -138,8 +139,7 @@
     "tslib": "1.10.0",
     "tslint": "5.11.0",
     "typescript": "3.8.3",
-    "webpack-bundle-analyzer": "^3.7.0",
-    "browserify-sign": "4.2.2"
+    "webpack-bundle-analyzer": "^3.7.0"
   },
   "browser": {
     "fs": false,
