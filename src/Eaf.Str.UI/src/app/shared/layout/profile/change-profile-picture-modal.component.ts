@@ -1,11 +1,12 @@
-import { IAjaxResponse } from '@eaf/eafHttpInterceptor';
+﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { TokenService } from '@eaf/auth/token.service';
-import { Component, Injector, ViewChild } from '@angular/core';
+import { IAjaxResponse } from '@eaf/eafHttpInterceptor';
 import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ProfileServiceProxy, UpdateProfilePictureInput } from '@shared/service-proxies/service-proxies';
-import { FileUploader, FileUploaderOptions, FileItem } from 'ng2-file-upload';
+import { FileUploader, FileUploaderOptions } from 'ng2-file-upload';
 import { ModalDirective } from 'ngx-bootstrap';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -19,8 +20,9 @@ export class ChangeProfilePictureModalComponent extends AppComponentBase {
   public uploader: FileUploader;
   public temporaryPictureUrl: string;
   public saving = false;
+  private input = new UpdateProfilePictureInput();
 
-  private maxProfilPictureBytesUserFriendlyValue = 50;
+  public maxProfilPictureBytesUserFriendlyValue = 50;
   private temporaryPictureFileName: string;
   private _uploaderOptions: FileUploaderOptions = {};
 
@@ -61,15 +63,25 @@ export class ChangeProfilePictureModalComponent extends AppComponentBase {
     }
 
     this.imageChangedEvent = event;
+    this.uploader.clearQueue();
+    this.uploader.addToQueue(event.target.files);
   }
 
-  imageCroppedFile(file: File) {
-    let files: File[] = [file];
+  imageCropped(event: ImageCroppedEvent): void {
+    this.input.x = event.cropperPosition.x1;
+    this.input.y = event.cropperPosition.y1;
+    this.input.width = event.cropperPosition.x2;
+    this.input.height = event.cropperPosition.y2;
+  }
+
+  imageCroppedFile(file: File): void {
+    const files: File[] = [file];
     this.uploader.clearQueue();
     this.uploader.addToQueue(files);
   }
 
   initFileUploader(): void {
+    this.input = new UpdateProfilePictureInput();
     this.uploader = new FileUploader({ url: AppConsts.remoteServiceBaseUrl + '/api/services/app/Profile/UploadProfilePicture' });
     this._uploaderOptions.autoUpload = false;
     this._uploaderOptions.authToken = 'Bearer ' + this._tokenService.getToken();
@@ -91,16 +103,12 @@ export class ChangeProfilePictureModalComponent extends AppComponentBase {
   }
 
   updateProfilePicture(fileToken: string): void {
-    const input = new UpdateProfilePictureInput();
-    input.fileToken = fileToken;
-    input.x = 0;
-    input.y = 0;
-    input.width = 0;
-    input.height = 0;
+    console.warn(this.imageChangedEvent);
+    this.input.fileToken = fileToken;
 
     this.saving = true;
     this._profileService
-      .updateProfilePicture(input)
+      .updateProfilePicture(this.input)
       .pipe(
         finalize(() => {
           this.saving = false;
@@ -122,6 +130,7 @@ export class ChangeProfilePictureModalComponent extends AppComponentBase {
   }
 
   save(): void {
+    console.info(this.uploader.queue);
     this.uploader.uploadAll();
   }
 }
