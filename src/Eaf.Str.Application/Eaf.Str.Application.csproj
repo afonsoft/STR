@@ -15,7 +15,7 @@
 		<ProjectReference Include="..\Eaf.Str.EntityFrameworkCore\Eaf.Str.EntityFrameworkCore.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Eaf.Middleware.Application" Version="7.0.2" />
+		<PackageReference Include="Eaf.Middleware.Application" Version="7.0.3" />
 		<PackageReference Include="QrCoder.Core" Version="1.0.1" />
 		<PackageReference Include="BarcodeLib" Version="3.0.3" />
 	</ItemGroup>
