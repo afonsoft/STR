@@ -29,7 +29,7 @@ namespace Eaf.Str.Web.Middleware
         {
             if (context?.Response != null && !context.Response.Headers.ContainsKey(key))
             {
-                context.Response.Headers.Add(key, value);
+                context.Response.Headers.Append(key, value);
             }
         }
     }
