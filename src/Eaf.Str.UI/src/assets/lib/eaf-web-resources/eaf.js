@@ -358,7 +358,7 @@
           FATAL: 5
         };
 
-        eaf.log.level = eaf.log.levels.DEBUG;
+        eaf.log.level = eaf.log.levels.WARN;
 
         eaf.log.log = function (logObject, logLevel) {
           if (!window.console || !window.console.log) {

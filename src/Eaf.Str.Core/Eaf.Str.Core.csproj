@@ -12,8 +12,8 @@
 		<EmbeddedResource Include="Application\Localization\Str\Str.xml" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Eaf.Middleware.Core" Version="7.0.3" />
-		<PackageReference Include="Eaf.TextTemplating" Version="7.0.3" />
+		<PackageReference Include="Eaf.Middleware.Core" Version="7.0.4" />
+		<PackageReference Include="Eaf.TextTemplating" Version="7.0.4" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.3" />
 	</ItemGroup>
 </Project>
