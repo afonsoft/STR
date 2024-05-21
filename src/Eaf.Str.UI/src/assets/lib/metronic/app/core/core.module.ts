@@ -1,14 +1,14 @@
-﻿import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { EafHttpInterceptor } from '@eaf/eafHttpInterceptor';
+﻿import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MenuAsideDirective } from './directives/menu-aside.directive';
 
 import { MenuAsideOffcanvasDirective } from './directives/menu-aside-offcanvas.directive';
-import { MenuAsideToggleDirective } from './directives/menu-aside-toggle.directive';
-import { MenuAsideDirective } from './directives/menu-aside.directive';
 import { MenuHorizontalOffcanvasDirective } from './directives/menu-horizontal-offcanvas.directive';
 import { MenuHorizontalDirective } from './directives/menu-horizontal.directive';
+import { MenuAsideToggleDirective } from './directives/menu-aside-toggle.directive';
 import { LayoutRefService } from './services/layout-ref.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { EafHttpInterceptor } from '@eaf/eafHttpInterceptor';
 
 @NgModule({
   imports: [CommonModule],
@@ -18,7 +18,7 @@ import { LayoutRefService } from './services/layout-ref.service';
     MenuAsideOffcanvasDirective,
     MenuHorizontalOffcanvasDirective,
     MenuHorizontalDirective,
-    MenuAsideToggleDirective,
+        MenuAsideToggleDirective
   ],
   exports: [
     // directives
@@ -26,15 +26,15 @@ import { LayoutRefService } from './services/layout-ref.service';
     MenuAsideOffcanvasDirective,
     MenuHorizontalOffcanvasDirective,
     MenuHorizontalDirective,
-    MenuAsideToggleDirective,
+        MenuAsideToggleDirective
   ],
   providers: [
     LayoutRefService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: EafHttpInterceptor,
-      multi: true,
-    },
-  ],
+            multi: true
+        }
+    ]
 })
-export class CoreModule {}
+export class CoreModule { }
