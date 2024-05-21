@@ -18,7 +18,18 @@
             "polyfills": "src/polyfills.ts",
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",
-            "aot": false,
+            "aot": true,
+            "allowedCommonJsDependencies": [
+              "angular2-text-mask",
+              "moment-timezone",
+              "js-sha256",
+              "object-path",
+              "angular2-counto",
+              "locales.min",
+              "moment/min/locales.min",
+              "lodash",
+              "rtl-detect"
+            ],
             "assets": [
               "src/assets",
               "src/web.config",
@@ -72,14 +83,19 @@
               "src/assets/lib/metronic/assets/vendors/base/vendors.bundle.js",
               "src/assets/lib/metronic/assets/vendors/base/scripts.bundle.js",
               "src/assets/lib/eaf-web-resources/functions.js"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -92,7 +108,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -110,13 +127,6 @@
           "options": {
             "browserTarget": "eaf-projectname-ui:build"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["src/tsconfig.json"],
-            "exclude": []
-          }
         }
       }
     }
@@ -125,7 +135,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "css"
+      "style": "css"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

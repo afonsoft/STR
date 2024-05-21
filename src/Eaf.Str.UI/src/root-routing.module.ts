@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { NavigationEnd, Router, RouterModule, Routes } from '@angular/router';
 import { AppUiCustomizationService } from '@shared/common/ui/app-ui-customization.service';
 
@@ -6,13 +6,13 @@ const routes: Routes = [
     { path: '', redirectTo: '/app/main/dashboard', pathMatch: 'full' },
     {
         path: 'account',
-        loadChildren: 'account/account.module#AccountModule', //Lazy load account module
+        loadChildren: () => import('account/account.module').then(m => m.AccountModule), //Lazy load account module
         data: { preload: true }
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { enableTracing: false })],
+    imports: [RouterModule.forRoot(routes, { enableTracing: false, relativeLinkResolution: 'legacy' })],
     exports: [RouterModule],
     providers: []
 })

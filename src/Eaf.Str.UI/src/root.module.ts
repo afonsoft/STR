@@ -1,4 +1,4 @@
-import { EafModule } from '@eaf/eaf.module';
+﻿import { EafModule } from '@eaf/eaf.module';
 import { PlatformLocation, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, Injector, LOCALE_ID, NgModule } from '@angular/core';
@@ -61,10 +61,10 @@ export function appInitializerFactory(
 function initializeLocalForage() {
     localForage.config({
         driver: localForage.LOCALSTORAGE,
-        name: 'Str',
+        name: 'ProjectName',
         version: 1.0,
         storeName: 'projectName',
-        description: 'Cached data for Str'
+        description: 'Cached data for ProjectName'
     });
 }
 

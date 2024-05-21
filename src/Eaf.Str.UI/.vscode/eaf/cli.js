@@ -86,8 +86,7 @@ function build() {
 
 function install() {
     info('npm install deps');
-    exec('npm install -g @angular/cli@9.1.15 --force');
-    exec('npm install -g npm@8.5.5 --force');
+    exec('npm install -g @angular/cli@12 --force');
     exec('npm install -g colors');
     exec('npm install -g shelljs');
     exec('npm install -g command-line-args');
